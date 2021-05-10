@@ -111,7 +111,7 @@ func (suite *StateDBTestSuite) TestTransitionDb() {
 	suite.stateDB.SetNonce(suite.address, 123)
 
 	addr := sdk.AccAddress(suite.address.Bytes())
-	balance := ethermint.NewPhotonCoin(sdk.NewInt(5000))
+	balance := ethermint.NewToknCoin(sdk.NewInt(5000))
 	acc := suite.app.AccountKeeper.GetAccount(suite.ctx, addr)
 	_ = acc.SetCoins(sdk.NewCoins(balance))
 	suite.app.AccountKeeper.SetAccount(suite.ctx, acc)
@@ -201,7 +201,7 @@ func (suite *StateDBTestSuite) TestTransitionDb() {
 		{
 			"call disabled",
 			func() {
-				params := types.NewParams(ethermint.AttoPhoton, true, false)
+				params := types.NewParams(ethermint.AttoTokn, true, false)
 				suite.stateDB.SetParams(params)
 			},
 			types.StateTransition{
@@ -222,7 +222,7 @@ func (suite *StateDBTestSuite) TestTransitionDb() {
 		{
 			"create disabled",
 			func() {
-				params := types.NewParams(ethermint.AttoPhoton, false, true)
+				params := types.NewParams(ethermint.AttoTokn, false, true)
 				suite.stateDB.SetParams(params)
 			},
 			types.StateTransition{
@@ -245,7 +245,7 @@ func (suite *StateDBTestSuite) TestTransitionDb() {
 			func() {
 				suite.stateDB.SetParams(types.DefaultParams())
 				invalidGas := sdk.DecCoins{
-					{Denom: ethermint.AttoPhoton},
+					{Denom: ethermint.AttoTokn},
 				}
 				suite.ctx = suite.ctx.WithMinGasPrices(invalidGas)
 			},

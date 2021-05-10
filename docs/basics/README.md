@@ -11,7 +11,7 @@ This repository contains reference documentation on the basic concepts of Etherm
 1. [Accounts](./accounts.md)
 2. [Gas and Fees](./gas.md)
 3. [Lifecycle of a transaction](./transactions.md)
-4. [Photon](./photon.md)
+4. [Tokn](./tokn.md)
 5. [JSON-RPC Server](./json_rpc.md)
 6. [Hard Spoon](./hard_spoon.md)
 

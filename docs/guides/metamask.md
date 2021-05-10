@@ -11,7 +11,7 @@ Connect your Metamask wallet with Ethermint on a localnet mode. {synopsis}
 Start the Ethermint node using your terminal:
 
 ```bash
-ethermintd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info"
+toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info"
 ```
 
 ::: tip
@@ -21,7 +21,7 @@ You can also start a node from scratch by running `./init.sh` from the Ethermint
 In another tab start the REST server. Here replace `mykey` with the name of the key that you want to use and set the `chain-id` the chain identifier of your application.
 
 ```bash
-ethermintcli rest-server --laddr "tcp://localhost:8545" --unlock-key mykey --chain-id 1
+tokncli rest-server --laddr "tcp://localhost:8545" --unlock-key mykey --chain-id 1
 ```
 
 ## Adding a custom Network for Ethermint
@@ -44,13 +44,13 @@ Now you can export your private key from the terminal using the following comman
 to replace `mykey` with the name of the key that you want to export:
 
 ```bash
-ethermintcli keys unsafe-export-eth-key mykey
+tokncli keys unsafe-export-eth-key mykey
 ```
 
 Go back to the browser and select the `Private Key` option. Then paste the private key exported from
 the `unsafe-export-eth-key` command.
 
-Your account balance should show up as `1 APHOTON` and do transfers as usual.
+Your account balance should show up as `1 ATOKN` and do transfers as usual.
 
 ::: tip
 If it takes some time to load the balance of the account, change the network to `Main Ethereum
@@ -63,4 +63,4 @@ to see metamask logs, go to top right circle -> settings -> advanced -> download
 
 ## Known issues
 
-Currently, it's not possible to add custom tokens (even for APhotons) unless you deploy a token contract (eg: ERC20).
+Currently, it's not possible to add custom tokens (even for ATokns) unless you deploy a token contract (eg: ERC20).

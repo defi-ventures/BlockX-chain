@@ -28,7 +28,7 @@ func (suite *KeeperTestSuite) TestBalanceInvariant() {
 			func() {
 				acc := suite.app.AccountKeeper.NewAccountWithAddress(suite.ctx, address.Bytes())
 				suite.Require().NotNil(acc)
-				err := acc.SetCoins(sdk.NewCoins(ethermint.NewPhotonCoinInt64(1)))
+				err := acc.SetCoins(sdk.NewCoins(ethermint.NewToknCoinInt64(1)))
 				suite.Require().NoError(err)
 				suite.app.AccountKeeper.SetAccount(suite.ctx, acc)
 
@@ -41,7 +41,7 @@ func (suite *KeeperTestSuite) TestBalanceInvariant() {
 			func() {
 				acc := suite.app.AccountKeeper.NewAccountWithAddress(suite.ctx, address.Bytes())
 				suite.Require().NotNil(acc)
-				err := acc.SetCoins(sdk.NewCoins(ethermint.NewPhotonCoinInt64(1)))
+				err := acc.SetCoins(sdk.NewCoins(ethermint.NewToknCoinInt64(1)))
 				suite.Require().NoError(err)
 				suite.app.AccountKeeper.SetAccount(suite.ctx, acc)
 

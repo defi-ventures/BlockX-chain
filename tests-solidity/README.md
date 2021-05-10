@@ -10,22 +10,22 @@ Increasingly difficult tests are provided:
 
 ### Quick start
 
-**Prerequisite**: in the repo's root, run `make install` to install the `ethermintd` and `ethermintcli` binaries. When done, come back to this directory.
+**Prerequisite**: in the repo's root, run `make install` to install the `toknd` and `tokncli` binaries. When done, come back to this directory.
 
 **Prerequisite**: install the individual solidity packages. They're set up as individual reops in a yarn monorepo workspace. Install them all via `yarn install`.
 
-To run the tests, start three terminals (or two, if you run `ethermintd` with `&`).
+To run the tests, start three terminals (or two, if you run `toknd` with `&`).
 
-In the first, run `ethermintd`:
+In the first, run `toknd`:
 
 ```sh
 ./init-test-node.sh
 ```
 
-In the second, run `ethermintcli` as mentioned in the script's output:
+In the second, run `tokncli` as mentioned in the script's output:
 
 ```sh
-ethermintcli rest-server --laddr "tcp://localhost:8545" --unlock-key localkey,user1,user2 --chain-id "ethermint-1337" --trace --wsport 8546
+tokncli rest-server --laddr "tcp://localhost:8545" --unlock-key localkey,user1,user2 --chain-id "ethermint-1337" --trace --wsport 8546
 ```
 
 You will now have three ethereum accounts unlocked in the test node:
@@ -34,9 +34,9 @@ You will now have three ethereum accounts unlocked in the test node:
 - `0xddd64b4712f7c8f1ace3c145c950339eddaf221d` (User 1)
 - `0x0f54f47bf9b8e317b214ccd6a7c3e38b893cd7f0` (user 2)
 
-From here, in your other available terminal, go into any of the tests and run `yarn test-ethermint`. You should see `ethermintd` accepting transactions and producing blocks. You should be able to query for any transaction via:
+From here, in your other available terminal, go into any of the tests and run `yarn test-ethermint`. You should see `toknd` accepting transactions and producing blocks. You should be able to query for any transaction via:
 
-- `ethermintcli query tx <cosmos-sdk tx>`
+- `tokncli query tx <cosmos-sdk tx>`
 - `curl localhost:8545 -H "Content-Type:application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByHash","params":["<ethereum tx>"],"id":1}'`
 
 And obviously more, via the Ethereum JSON-RPC API).
@@ -54,9 +54,9 @@ The [`init-test-node.sh`](./init-test-node.sh) script sets up ethermint with the
 - `eth1pa20g7lehr330vs5ent20slr3wyne4lsy8qae3` (user 2)
   - `0x0f54f47bf9b8e317b214ccd6a7c3e38b893cd7f0`
 
-Each with roughly 100 ETH available (1e18 photon).
+Each with roughly 100 ETH available (1e18 tokn).
 
-Running `ethermintcli list keys` should output:
+Running `tokncli list keys` should output:
 
 ```json
 [

@@ -137,7 +137,7 @@ func (api *PrivateAccountAPI) NewAccount(password string) (common.Address, error
 
 	addr := common.BytesToAddress(info.GetPubKey().Address().Bytes())
 	api.logger.Info("Your new key was generated", "address", addr.String())
-	api.logger.Info("Please backup your key file!", "path", os.Getenv("HOME")+"/.ethermintd/"+name)
+	api.logger.Info("Please backup your key file!", "path", os.Getenv("HOME")+"/.toknd/"+name)
 	api.logger.Info("Please remember your password!")
 	return addr, nil
 }

@@ -5,34 +5,34 @@ import (
 )
 
 const (
-	// AttoPhoton defines the default coin denomination used in Ethermint in:
+	// AttoTokn defines the default coin denomination used in Ethermint in:
 	//
 	// - Staking parameters: denomination used as stake in the dPoS chain
 	// - Mint parameters: denomination minted due to fee distribution rewards
 	// - Governance parameters: denomination used for spam prevention in proposal deposits
 	// - Crisis parameters: constant fee denomination used for spam prevention to check broken invariant
 	// - EVM parameters: denomination used for running EVM state transitions in Ethermint.
-	AttoPhoton string = "aphoton"
+	AttoTokn string = "atokn"
 
-	// BaseDenomUnit defines the base denomination unit for Photons.
-	// 1 photon = 1x10^{BaseDenomUnit} aphoton
+	// BaseDenomUnit defines the base denomination unit for Tokns.
+	// 1 tokn = 1x10^{BaseDenomUnit} atokn
 	BaseDenomUnit = 18
 )
 
-// NewPhotonCoin is a utility function that returns an "aphoton" coin with the given sdk.Int amount.
+// NewToknCoin is a utility function that returns an "atokn" coin with the given sdk.Int amount.
 // The function will panic if the provided amount is negative.
-func NewPhotonCoin(amount sdk.Int) sdk.Coin {
-	return sdk.NewCoin(AttoPhoton, amount)
+func NewToknCoin(amount sdk.Int) sdk.Coin {
+	return sdk.NewCoin(AttoTokn, amount)
 }
 
-// NewPhotonDecCoin is a utility function that returns an "aphoton" decimal coin with the given sdk.Int amount.
+// NewToknDecCoin is a utility function that returns an "atokn" decimal coin with the given sdk.Int amount.
 // The function will panic if the provided amount is negative.
-func NewPhotonDecCoin(amount sdk.Int) sdk.DecCoin {
-	return sdk.NewDecCoin(AttoPhoton, amount)
+func NewToknDecCoin(amount sdk.Int) sdk.DecCoin {
+	return sdk.NewDecCoin(AttoTokn, amount)
 }
 
-// NewPhotonCoinInt64 is a utility function that returns an "aphoton" coin with the given int64 amount.
+// NewToknCoinInt64 is a utility function that returns an "atokn" coin with the given int64 amount.
 // The function will panic if the provided amount is negative.
-func NewPhotonCoinInt64(amount int64) sdk.Coin {
-	return sdk.NewInt64Coin(AttoPhoton, amount)
+func NewToknCoinInt64(amount int64) sdk.Coin {
+	return sdk.NewInt64Coin(AttoTokn, amount)
 }

@@ -48,10 +48,10 @@ const appName = "Ethermint"
 
 var (
 	// DefaultCLIHome sets the default home directories for the application CLI
-	DefaultCLIHome = os.ExpandEnv("$HOME/.ethermintcli")
+	DefaultCLIHome = os.ExpandEnv("$HOME/.tokncli")
 
 	// DefaultNodeHome sets the folder where the applcation data and configuration will be stored
-	DefaultNodeHome = os.ExpandEnv("$HOME/.ethermintd")
+	DefaultNodeHome = os.ExpandEnv("$HOME/.toknd")
 
 	// ModuleBasics defines the module BasicManager is in charge of setting up basic,
 	// non-dependant module elements, such as codec registration

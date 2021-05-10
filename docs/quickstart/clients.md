@@ -18,10 +18,10 @@ Ethermint is integrated with a CLI client that can be used to send transactions 
 
 ```bash
 # available query commands
-ethermintcli query -h
+tokncli query -h
 
 # available transaction commands
-ethermintcli tx -h
+tokncli tx -h
 ```
 
 ### Client Servers
@@ -32,11 +32,11 @@ The Ethermint client supports both [REST endpoints](https://cosmos.network/rpc) 
 
 Ethermint exposes REST endpoints for all the integrated Cosmos-SDK modules. This makes it easier for wallets and block explorers to interact with the proof-of-stake logic.
 
-To run the REST Server, you need to run the Ethermint daemon (`ethermintd`) and then execute (in another
+To run the REST Server, you need to run the Ethermint daemon (`toknd`) and then execute (in another
 process):
 
 ```bash
-ethermintcli rest-server --laddr "tcp://localhost:8545" --unlock-key $KEY --chain-id $CHAINID --trace
+tokncli rest-server --laddr "tcp://localhost:8545" --unlock-key $KEY --chain-id $CHAINID --trace
 ```
 
 You should see the logs from the REST and the RPC server.
