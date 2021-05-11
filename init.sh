@@ -21,7 +21,7 @@ make install
 ./build/tokncli keys add $KEY
 
 # Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
-toknd init $MONIKER --chain-id $CHAINID
+./build/toknd init $MONIKER --chain-id $CHAINID
 
 # Change parameter token denominations to atokn
 cat $HOME/.toknd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="atokn"' > $HOME/.toknd/config/tmp_genesis.json && mv $HOME/.toknd/config/tmp_genesis.json $HOME/.toknd/config/genesis.json
@@ -45,20 +45,20 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 100000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 100000000000000000000atokn
 
 # Sign genesis transaction
-toknd gentx --name $KEY --amount=1000000000000000000atokn --keyring-backend test
+./build/toknd gentx --name $KEY --amount=1000000000000000000atokn --keyring-backend test
 
 # Collect genesis tx
-toknd collect-gentxs
+./build/toknd collect-gentxs
 
 # Run this to ensure everything worked and that the genesis file is setup correctly
-toknd validate-genesis
+./build/toknd validate-genesis
 
 # Command to run the rest server in a different terminal/window
 echo -e '\nrun the following command in a different terminal/window to run the REST server and JSON-RPC:'
 echo -e "./build/tokncli rest-server --laddr \"tcp://localhost:8545\" --unlock-key $KEY --chain-id $CHAINID --trace\n"
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
+./build/toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
