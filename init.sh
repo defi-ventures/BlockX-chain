@@ -58,7 +58,7 @@ fi
 
 # Command to run the rest server in a different terminal/window
 echo -e '\nrun the following command in a different terminal/window to run the REST server and JSON-RPC:'
-echo -e "./build/tokncli rest-server --laddr \"tcp://localhost:8545\" --unlock-key $KEY --chain-id $CHAINID --trace\n"
+echo -e "./build/tokncli rest-server --laddr \"tcp://localhost:8545\" --unlock-key $KEY --chain-id $CHAINID --trace --rpc-api web3,eth,debug,personal,net\n"
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
 ./build/toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
