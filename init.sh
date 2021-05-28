@@ -1,13 +1,13 @@
 #!/bin/bash
 
 KEY="tokntestkey"
-CHAINID="tokn-1"
+CHAINID="tokn-179"
 MONIKER="localtestnet"
 
 # remove existing daemon and client
 rm -rf ~/.tokn*
 
-make install
+make build
 
 ./build/tokncli config keyring-backend test
 
