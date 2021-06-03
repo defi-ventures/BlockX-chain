@@ -2,24 +2,24 @@
 order: 4
 -->
 
-# Photon
+# Tokn
 
-Learn about the Photon, Ethermint's staking token. {synopsis}
+Learn about the Tokn, Ethermint's staking token. {synopsis}
 
 ## Introduction
 
 ::: tip
-The photon's initial distribution and supply is still TBD and will be announced in the future.
+The tokn's initial distribution and supply is still TBD and will be announced in the future.
 :::
 
-The photon is the staking token used in Ethermint.
+The tokn is the staking token used in Ethermint.
 
 ## Base Denomination
 
-Ethermint uses [Atto](https://en.wikipedia.org/wiki/Atto-) Photon as the base denomination to maintain parity with Ethereum.
+Ethermint uses [Atto](https://en.wikipedia.org/wiki/Atto-) Tokn as the base denomination to maintain parity with Ethereum.
 
 ```
-1 photon = 1×10⁻¹⁸ aphoton
+1 tokn = 1×10⁻¹⁸ atokn
 ```
 
 This matches Ethereum denomination of:

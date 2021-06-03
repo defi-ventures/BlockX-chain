@@ -24,8 +24,8 @@ RUN apk add --update ca-certificates jq
 WORKDIR /root
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/ethermintd /usr/bin/ethermintd
-COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/ethermintcli /usr/bin/ethermintcli
+COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/toknd /usr/bin/toknd
+COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/tokncli /usr/bin/tokncli
 
-# Run ethermintd by default
-CMD ["ethermintd"]
+# Run toknd by default
+CMD ["toknd"]

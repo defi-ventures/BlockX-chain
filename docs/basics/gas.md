@@ -91,4 +91,4 @@ as gas is required inherently by Ethereum. This check is done by the evm transac
 
 ## Next {hide}
 
-Learn about the [Photon](./photon.md) token {hide}
+Learn about the [Tokn](./tokn.md) token {hide}

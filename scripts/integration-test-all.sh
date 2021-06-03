@@ -17,7 +17,7 @@ KEY="mykey"
 CHAINID="ethermint-2"
 MONIKER="mymoniker"
 
-## default port prefixes for ethermintd
+## default port prefixes for toknd
 NODE_P2P_PORT="2660"
 NODE_PORT="2663"
 NODE_RPC_PORT="2666"
@@ -73,25 +73,25 @@ arrcli=()
 
 init_func() {
     echo "create and add new keys"
-    "$PWD"/build/ethermintcli config keyring-backend test --home "$DATA_CLI_DIR$i"
-    "$PWD"/build/ethermintcli keys add $KEY"$i" --home "$DATA_CLI_DIR$i" --no-backup --chain-id $CHAINID
+    "$PWD"/build/tokncli config keyring-backend test --home "$DATA_CLI_DIR$i"
+    "$PWD"/build/tokncli keys add $KEY"$i" --home "$DATA_CLI_DIR$i" --no-backup --chain-id $CHAINID
     echo "init Ethermint with moniker=$MONIKER and chain-id=$CHAINID"
-    "$PWD"/build/ethermintd init $MONIKER --chain-id $CHAINID --home "$DATA_DIR$i"
-    echo "init ethermintcli with chain-id=$CHAINID and config it trust-node true"
-    "$PWD"/build/ethermintcli config chain-id $CHAINID --home "$DATA_CLI_DIR$i"
-    "$PWD"/build/ethermintcli config output json --home "$DATA_CLI_DIR$i"
-    "$PWD"/build/ethermintcli config indent true --home "$DATA_CLI_DIR$i"
-    "$PWD"/build/ethermintcli config trust-node true --home "$DATA_CLI_DIR$i"
+    "$PWD"/build/toknd init $MONIKER --chain-id $CHAINID --home "$DATA_DIR$i"
+    echo "init tokncli with chain-id=$CHAINID and config it trust-node true"
+    "$PWD"/build/tokncli config chain-id $CHAINID --home "$DATA_CLI_DIR$i"
+    "$PWD"/build/tokncli config output json --home "$DATA_CLI_DIR$i"
+    "$PWD"/build/tokncli config indent true --home "$DATA_CLI_DIR$i"
+    "$PWD"/build/tokncli config trust-node true --home "$DATA_CLI_DIR$i"
     echo "prepare genesis: Allocate genesis accounts"
-    "$PWD"/build/ethermintd add-genesis-account \
-    "$("$PWD"/build/ethermintcli keys show "$KEY$i" -a --home "$DATA_CLI_DIR$i" )" 1000000000000000000aphoton,1000000000000000000stake \
+    "$PWD"/build/toknd add-genesis-account \
+    "$("$PWD"/build/tokncli keys show "$KEY$i" -a --home "$DATA_CLI_DIR$i" )" 1000000000000000000atokn,1000000000000000000stake \
     --home "$DATA_DIR$i" --home-client "$DATA_CLI_DIR$i"
     echo "prepare genesis: Sign genesis transaction"
-    "$PWD"/build/ethermintd gentx --name $KEY"$i" --keyring-backend test --home "$DATA_DIR$i" --home-client "$DATA_CLI_DIR$i"
+    "$PWD"/build/toknd gentx --name $KEY"$i" --keyring-backend test --home "$DATA_DIR$i" --home-client "$DATA_CLI_DIR$i"
     echo "prepare genesis: Collect genesis tx"
-    "$PWD"/build/ethermintd collect-gentxs --home "$DATA_DIR$i"
+    "$PWD"/build/toknd collect-gentxs --home "$DATA_DIR$i"
     echo "prepare genesis: Run validate-genesis to ensure everything worked and that the genesis file is setup correctly"
-    "$PWD"/build/ethermintd validate-genesis --home "$DATA_DIR$i"
+    "$PWD"/build/toknd validate-genesis --home "$DATA_DIR$i"
 
     if [[ $MODE == "pending" ]]; then
         ls $DATA_DIR$i
@@ -108,7 +108,7 @@ init_func() {
 
 start_func() {
     echo "starting ethermint node $i in background ..."
-    "$PWD"/build/ethermintd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" \
+    "$PWD"/build/toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" \
     --p2p.laddr tcp://$IP_ADDR:$NODE_P2P_PORT"$i" --address tcp://$IP_ADDR:$NODE_PORT"$i" --rpc.laddr tcp://$IP_ADDR:$NODE_RPC_PORT"$i" \
     --home "$DATA_DIR$i" \
     >"$DATA_DIR"/node"$i".log 2>&1 & disown
@@ -121,13 +121,13 @@ start_func() {
 
 start_cli_func() {
     echo "starting ethermint node $i in background ..."
-    "$PWD"/build/ethermintcli rest-server --unlock-key $KEY"$i" --chain-id $CHAINID --trace --rpc-api="web3,eth,net,personal" \
+    "$PWD"/build/tokncli rest-server --unlock-key $KEY"$i" --chain-id $CHAINID --trace --rpc-api="web3,eth,net,personal" \
     --laddr "tcp://localhost:$RPC_PORT$i" --node tcp://$IP_ADDR:$NODE_RPC_PORT"$i" \
     --home "$DATA_CLI_DIR$i" --read-timeout 30 --write-timeout 30 \
     >"$DATA_CLI_DIR"/cli"$i".log 2>&1 & disown
     
     ETHERMINT_CLI_PID=$!
-    echo "started ethermintcli node, pid=$ETHERMINT_CLI_PID"
+    echo "started tokncli node, pid=$ETHERMINT_CLI_PID"
     # add PID to array
     arrcli+=("$ETHERMINT_CLI_PID")
 }

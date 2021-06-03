@@ -31,7 +31,7 @@ type AccountTestSuite struct {
 func (suite *AccountTestSuite) SetupTest() {
 	pubkey := secp256k1.GenPrivKey().PubKey()
 	addr := sdk.AccAddress(pubkey.Address())
-	balance := sdk.NewCoins(types.NewPhotonCoin(sdk.OneInt()))
+	balance := sdk.NewCoins(types.NewToknCoin(sdk.OneInt()))
 	baseAcc := auth.NewBaseAccount(addr, balance, pubkey, 10, 50)
 	suite.account = &types.EthAccount{
 		BaseAccount: baseAcc,
@@ -51,10 +51,10 @@ func (suite *AccountTestSuite) TestEthAccount_Balance() {
 		initialCoins sdk.Coins
 		amount       sdk.Int
 	}{
-		{"positive diff", types.AttoPhoton, sdk.Coins{}, sdk.OneInt()},
-		{"zero diff, same coin", types.AttoPhoton, sdk.NewCoins(types.NewPhotonCoin(sdk.ZeroInt())), sdk.ZeroInt()},
-		{"zero diff, other coin", sdk.DefaultBondDenom, sdk.NewCoins(types.NewPhotonCoin(sdk.ZeroInt())), sdk.ZeroInt()},
-		{"negative diff", types.AttoPhoton, sdk.NewCoins(types.NewPhotonCoin(sdk.NewInt(10))), sdk.NewInt(1)},
+		{"positive diff", types.AttoTokn, sdk.Coins{}, sdk.OneInt()},
+		{"zero diff, same coin", types.AttoTokn, sdk.NewCoins(types.NewToknCoin(sdk.ZeroInt())), sdk.ZeroInt()},
+		{"zero diff, other coin", sdk.DefaultBondDenom, sdk.NewCoins(types.NewToknCoin(sdk.ZeroInt())), sdk.ZeroInt()},
+		{"negative diff", types.AttoTokn, sdk.NewCoins(types.NewToknCoin(sdk.NewInt(10))), sdk.NewInt(1)},
 	}
 
 	for _, tc := range testCases {
@@ -113,7 +113,7 @@ func (suite *AccountTestSuite) TestEthermintAccount_String() {
   address: %s
   eth_address: %s
   coins:
-  - denom: aphoton
+  - denom: atokn
     amount: "1"
   public_key: %s
   account_number: 10
@@ -148,7 +148,7 @@ func (suite *AccountTestSuite) TestEthermintAccount_MarshalJSON() {
 
 	// test that the sdk.AccAddress is populated from the hex address
 	jsonAcc := fmt.Sprintf(
-		`{"address":"","eth_address":"%s","coins":[{"denom":"aphoton","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
+		`{"address":"","eth_address":"%s","coins":[{"denom":"atokn","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
 		suite.account.EthAddress().String(), bech32pubkey,
 	)
 
@@ -158,7 +158,7 @@ func (suite *AccountTestSuite) TestEthermintAccount_MarshalJSON() {
 	suite.Require().Equal(suite.account.Address.String(), res.Address.String())
 
 	jsonAcc = fmt.Sprintf(
-		`{"address":"","eth_address":"","coins":[{"denom":"aphoton","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
+		`{"address":"","eth_address":"","coins":[{"denom":"atokn","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
 		bech32pubkey,
 	)
 
@@ -168,7 +168,7 @@ func (suite *AccountTestSuite) TestEthermintAccount_MarshalJSON() {
 
 	// test that the sdk.AccAddress is populated from the hex address
 	jsonAcc = fmt.Sprintf(
-		`{"address": "%s","eth_address":"0x0000000000000000000000000000000000000000","coins":[{"denom":"aphoton","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
+		`{"address": "%s","eth_address":"0x0000000000000000000000000000000000000000","coins":[{"denom":"atokn","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
 		suite.account.Address.String(), bech32pubkey,
 	)
 

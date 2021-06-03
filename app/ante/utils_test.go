@@ -51,11 +51,11 @@ func newTestMsg(addrs ...sdk.AccAddress) *sdk.TestMsg {
 }
 
 func newTestCoins() sdk.Coins {
-	return sdk.NewCoins(ethermint.NewPhotonCoinInt64(500000000))
+	return sdk.NewCoins(ethermint.NewToknCoinInt64(500000000))
 }
 
 func newTestStdFee() auth.StdFee {
-	return auth.NewStdFee(220000, sdk.NewCoins(ethermint.NewPhotonCoinInt64(150)))
+	return auth.NewStdFee(220000, sdk.NewCoins(ethermint.NewToknCoinInt64(150)))
 }
 
 // GenerateAddress generates an Ethereum address.

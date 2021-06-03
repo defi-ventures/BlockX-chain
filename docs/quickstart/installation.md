@@ -17,8 +17,8 @@ make install
 Check that the binaries have been successfuly installed:
 
 ```bash
-ethermintd -h
-ethermintcli -h
+toknd -h
+tokncli -h
 ```
 
 ## Docker
@@ -33,8 +33,8 @@ This will install the binaries on the `./build` directory. Now, check that the b
 successfuly installed:
 
 ```bash
-ethermintd -h
-ethermintcli -h
+toknd -h
+tokncli -h
 ```
 
 ## Releases
