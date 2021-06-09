@@ -45,10 +45,10 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 100000000000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 1000000000000000000000000atokn
 
 # Sign genesis transaction
-./build/toknd gentx --name $KEY --amount=100000000000000000000000000atokn --keyring-backend test
+./build/toknd gentx --name $KEY --amount=1000000000000000000000000atokn --keyring-backend test
 
 # Collect genesis tx
 ./build/toknd collect-gentxs
