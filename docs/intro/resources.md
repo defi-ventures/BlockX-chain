@@ -7,7 +7,7 @@ order: 4
 Learn about Ethermint with the list of official resources. {synopsis}
 
 - Official Documentation: [https://docs.ethermint.zone/](https://docs.ethermint.zone/)
-- Official Codebase: [https://github.com/cosmos/ethermint](https://github.com/cosmos/ethermint)
+- Official Codebase: [https://github.com/defi-ventures/ethermint](https://github.com/defi-ventures/ethermint)
 - Official Website: [https://ethermint.zone/](https://ethermint.zone/)
 
 ## Workshops and Videos
@@ -42,8 +42,8 @@ Note: most of these articles are outdated as they refer to the previous Ethermin
 
 ## Previous Ethermint implementations
 
-- [Ethermint ABCI:](https://github.com/cosmos/ethermint_abci) This project was the first and original Tendermint ABCI application with EVM support. Not built with Cosmos SDK.
-- [Ethermint (archive):](https://github.com/cosmos/ethermint-archive) Precursor implementation of the current project, developed by [All in Bits Inc](https://tendermint.com/). It was aiming to implement [Turbo-Geth](https://github.com/ledgerwatch/turbo-geth) as the EVM for scalability improvements.
+- [Ethermint ABCI:](https://github.com/defi-ventures/ethermint_abci) This project was the first and original Tendermint ABCI application with EVM support. Not built with Cosmos SDK.
+- [Ethermint (archive):](https://github.com/defi-ventures/ethermint-archive) Precursor implementation of the current project, developed by [All in Bits Inc](https://tendermint.com/). It was aiming to implement [Turbo-Geth](https://github.com/ledgerwatch/turbo-geth) as the EVM for scalability improvements.
 
 ## Next {hide}
 

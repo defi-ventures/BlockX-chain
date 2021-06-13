@@ -10,8 +10,8 @@ import (
 	authante "github.com/cosmos/cosmos-sdk/x/auth/ante"
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	ethermint "github.com/cosmos/ethermint/types"
-	evmtypes "github.com/cosmos/ethermint/x/evm/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
+	evmtypes "github.com/defi-ventures/ethermint/x/evm/types"
 
 	"github.com/ethereum/go-ethereum/common"
 	ethcore "github.com/ethereum/go-ethereum/core"

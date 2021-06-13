@@ -36,5 +36,5 @@ buf protoc -I "proto" -I "third_party/proto" -I "testutil/testdata" --gocosmos_o
 Mgoogle/protobuf/any.proto=github.com/cosmos/cosmos-sdk/codec/types:. ./testutil/testdata/*.proto
 
 # move proto files to the right places
-cp -r github.com/cosmos/ethermint/* ./
+cp -r github.com/defi-ventures/ethermint/* ./
 rm -rf github.com

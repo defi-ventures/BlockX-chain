@@ -17,8 +17,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	rpctypes "github.com/cosmos/ethermint/rpc/types"
-	evmtypes "github.com/cosmos/ethermint/x/evm/types"
+	rpctypes "github.com/defi-ventures/ethermint/rpc/types"
+	evmtypes "github.com/defi-ventures/ethermint/x/evm/types"
 )
 
 var (

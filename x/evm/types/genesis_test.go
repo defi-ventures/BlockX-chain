@@ -8,7 +8,7 @@ import (
 	ethcmn "github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
 )
 
 type GenesisTestSuite struct {

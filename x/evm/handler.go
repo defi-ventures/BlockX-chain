@@ -3,8 +3,8 @@ package evm
 import (
 	"github.com/ethereum/go-ethereum/common"
 
-	ethermint "github.com/cosmos/ethermint/types"
-	"github.com/cosmos/ethermint/x/evm/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
+	"github.com/defi-ventures/ethermint/x/evm/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
@@ -33,7 +33,7 @@ func NewHandler(k *Keeper) sdk.Handler {
 		// effect, the data in the modified CommitStateDB is not rolled back,
 		// they take effect, and dirty data is generated.
 		// Therefore, the code here specifically deals with this situation.
-		// See https://github.com/cosmos/ethermint/issues/668 for more information.
+		// See https://github.com/defi-ventures/ethermint/issues/668 for more information.
 		defer func() {
 			if r := recover(); r != nil {
 				// We first used "k.CommitStateDB = snapshotStateDB" to roll back

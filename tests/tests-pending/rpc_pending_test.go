@@ -18,8 +18,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 
-	rpctypes "github.com/cosmos/ethermint/rpc/types"
-	util "github.com/cosmos/ethermint/tests"
+	rpctypes "github.com/defi-ventures/ethermint/rpc/types"
+	util "github.com/defi-ventures/ethermint/tests"
 )
 
 const (

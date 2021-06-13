@@ -5,7 +5,7 @@ import (
 
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	ethermint "github.com/cosmos/ethermint/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
 
 	ethcmn "github.com/ethereum/go-ethereum/common"
 )

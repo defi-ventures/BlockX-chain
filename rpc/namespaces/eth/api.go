@@ -12,13 +12,13 @@ import (
 
 	"github.com/spf13/viper"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	"github.com/cosmos/ethermint/crypto/hd"
-	"github.com/cosmos/ethermint/rpc/backend"
-	rpctypes "github.com/cosmos/ethermint/rpc/types"
-	ethermint "github.com/cosmos/ethermint/types"
-	"github.com/cosmos/ethermint/utils"
-	evmtypes "github.com/cosmos/ethermint/x/evm/types"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/crypto/hd"
+	"github.com/defi-ventures/ethermint/rpc/backend"
+	rpctypes "github.com/defi-ventures/ethermint/rpc/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
+	"github.com/defi-ventures/ethermint/utils"
+	evmtypes "github.com/defi-ventures/ethermint/x/evm/types"
 
 	abci "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/crypto/merkle"

@@ -99,7 +99,7 @@ npx saddle test -n ethermint
 ## Known Issues:
 
 1. `ether.js` is not compatible with Ethermint.
-Currently, Ethermint is unable to interact with the test suites and there is a slight incompatibility with ethers.js. The issue has been documented and has been in the `icebox` for some time ([https://github.com/cosmos/ethermint/issues/349](https://github.com/cosmos/ethermint/issues/349)). 
+Currently, Ethermint is unable to interact with the test suites and there is a slight incompatibility with ethers.js. The issue has been documented and has been in the `icebox` for some time ([https://github.com/defi-ventures/ethermint/issues/349](https://github.com/defi-ventures/ethermint/issues/349)). 
 
 In the future, when compatible with `ethers.js`, the test suites can be run with the simple command and will be run against the Ethermint EVM. If the all of the tests pass without incident, the Ethermint EVM implementation can be deemed to produce the same output as the Ethereum EVM.
 

@@ -16,7 +16,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/crypto/keys"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
 )
 
 const (

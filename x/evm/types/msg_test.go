@@ -10,7 +10,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
 
 	ethcmn "github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"

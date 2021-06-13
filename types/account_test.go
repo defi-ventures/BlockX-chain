@@ -13,8 +13,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	"github.com/cosmos/ethermint/types"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/types"
 )
 
 func init() {

@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"sync/atomic"
 
-	"github.com/cosmos/ethermint/types"
+	"github.com/defi-ventures/ethermint/types"
 	"gopkg.in/yaml.v2"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"

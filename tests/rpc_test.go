@@ -22,8 +22,8 @@ import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	rpctypes "github.com/cosmos/ethermint/rpc/types"
-	ethermint "github.com/cosmos/ethermint/types"
+	rpctypes "github.com/defi-ventures/ethermint/rpc/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
 )
 
 const (

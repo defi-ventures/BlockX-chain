@@ -20,8 +20,8 @@ import (
 	authvesting "github.com/cosmos/cosmos-sdk/x/auth/vesting"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 
-	"github.com/cosmos/ethermint/crypto/hd"
-	ethermint "github.com/cosmos/ethermint/types"
+	"github.com/defi-ventures/ethermint/crypto/hd"
+	ethermint "github.com/defi-ventures/ethermint/types"
 
 	ethcrypto "github.com/ethereum/go-ethereum/crypto"
 )

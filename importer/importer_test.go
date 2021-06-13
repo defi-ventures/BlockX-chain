@@ -23,11 +23,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	"github.com/cosmos/cosmos-sdk/x/params"
 
-	"github.com/cosmos/ethermint/core"
-	cryptocodec "github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	"github.com/cosmos/ethermint/types"
-	"github.com/cosmos/ethermint/x/evm"
-	evmtypes "github.com/cosmos/ethermint/x/evm/types"
+	"github.com/defi-ventures/ethermint/core"
+	cryptocodec "github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/types"
+	"github.com/defi-ventures/ethermint/x/evm"
+	evmtypes "github.com/defi-ventures/ethermint/x/evm/types"
 
 	ethcmn "github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/consensus/ethash"

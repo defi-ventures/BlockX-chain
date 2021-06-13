@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	ethermint "github.com/cosmos/ethermint/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
 	ethcmn "github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 )

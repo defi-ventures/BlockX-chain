@@ -17,10 +17,10 @@ import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	"github.com/cosmos/ethermint/crypto/hd"
-	"github.com/cosmos/ethermint/rpc/namespaces/eth"
-	rpctypes "github.com/cosmos/ethermint/rpc/types"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/crypto/hd"
+	"github.com/defi-ventures/ethermint/rpc/namespaces/eth"
+	rpctypes "github.com/defi-ventures/ethermint/rpc/types"
 )
 
 // PrivateAccountAPI is the personal_ prefixed set of APIs in the Web3 JSON-RPC spec.

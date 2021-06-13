@@ -14,8 +14,8 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	evmtypes "github.com/cosmos/ethermint/x/evm/types"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	evmtypes "github.com/defi-ventures/ethermint/x/evm/types"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"

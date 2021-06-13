@@ -17,7 +17,7 @@ import (
 	ethcrypto "github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
 )
 
 // GenerateEthAddress generates an Ethereum address.

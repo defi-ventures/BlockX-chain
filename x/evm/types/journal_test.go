@@ -22,8 +22,8 @@ import (
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	ethcrypto "github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	ethermint "github.com/cosmos/ethermint/types"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	ethermint "github.com/defi-ventures/ethermint/types"
 )
 
 type JournalTestSuite struct {

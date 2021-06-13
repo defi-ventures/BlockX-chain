@@ -50,5 +50,5 @@ func ParseChainID(chainID string) (*big.Int, error) {
 
 // GenerateRandomChainID returns a random chain-id in the valid format.
 func GenerateRandomChainID() string {
-	return fmt.Sprintf("ethermint-%d", 10+tmrand.Intn(10000))
+	return fmt.Sprintf("tokn-%d", 10+tmrand.Intn(10000))
 }

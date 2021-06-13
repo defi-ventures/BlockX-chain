@@ -4,7 +4,7 @@ FROM golang:alpine AS build-env
 ENV PACKAGES git build-base
 
 # Set working directory for the build
-WORKDIR /go/src/github.com/cosmos/ethermint
+WORKDIR /go/src/github.com/defi-ventures/ethermint
 
 # Install dependencies
 RUN apk add --update $PACKAGES
@@ -24,8 +24,8 @@ RUN apk add --update ca-certificates jq
 WORKDIR /root
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/toknd /usr/bin/toknd
-COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/tokncli /usr/bin/tokncli
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/toknd /usr/bin/toknd
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/tokncli /usr/bin/tokncli
 
 # Run toknd by default
 CMD ["toknd"]

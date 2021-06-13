@@ -10,7 +10,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/core/vm"
 
-	ethermint "github.com/cosmos/ethermint/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
 )
 
 const (

@@ -4,10 +4,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	ethermint "github.com/cosmos/ethermint/types"
-	"github.com/cosmos/ethermint/x/evm"
-	"github.com/cosmos/ethermint/x/evm/types"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	ethermint "github.com/defi-ventures/ethermint/types"
+	"github.com/defi-ventures/ethermint/x/evm"
+	"github.com/defi-ventures/ethermint/x/evm/types"
 
 	"github.com/ethereum/go-ethereum/common"
 	ethcmn "github.com/ethereum/go-ethereum/common"

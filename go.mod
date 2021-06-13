@@ -1,4 +1,4 @@
-module github.com/cosmos/ethermint
+module github.com/defi-ventures/ethermint
 
 go 1.15
 

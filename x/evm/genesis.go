@@ -8,9 +8,9 @@ import (
 
 	ethcmn "github.com/ethereum/go-ethereum/common"
 
-	ethermint "github.com/cosmos/ethermint/types"
-	"github.com/cosmos/ethermint/x/evm/keeper"
-	"github.com/cosmos/ethermint/x/evm/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
+	"github.com/defi-ventures/ethermint/x/evm/keeper"
+	"github.com/defi-ventures/ethermint/x/evm/types"
 
 	abci "github.com/tendermint/tendermint/abci/types"
 )

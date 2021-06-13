@@ -21,12 +21,12 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankcmd "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
 
-	"github.com/cosmos/ethermint/app"
-	"github.com/cosmos/ethermint/client"
-	"github.com/cosmos/ethermint/codec"
-	"github.com/cosmos/ethermint/crypto/ethsecp256k1"
-	"github.com/cosmos/ethermint/rpc"
-	ethermint "github.com/cosmos/ethermint/types"
+	"github.com/defi-ventures/ethermint/app"
+	"github.com/defi-ventures/ethermint/client"
+	"github.com/defi-ventures/ethermint/codec"
+	"github.com/defi-ventures/ethermint/crypto/ethsecp256k1"
+	"github.com/defi-ventures/ethermint/rpc"
+	ethermint "github.com/defi-ventures/ethermint/types"
 )
 
 var (

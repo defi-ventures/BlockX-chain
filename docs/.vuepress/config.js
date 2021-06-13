@@ -67,7 +67,7 @@ module.exports = {
           title: 'Resources',
           children: [{
               title: 'Ethermint API Reference',
-              path: 'https://godoc.org/github.com/cosmos/ethermint'
+              path: 'https://godoc.org/github.com/defi-ventures/ethermint'
             },
             {
               title: 'Cosmos REST API Spec',
@@ -110,7 +110,7 @@ module.exports = {
       },
       services: [{
           service: 'github',
-          url: 'https://github.com/cosmos/ethermint'
+          url: 'https://github.com/defi-ventures/ethermint'
         },
         {
           service: 'twitter',
@@ -162,14 +162,14 @@ module.exports = {
           title: 'Contributing',
           children: [{
               title: 'Contributing to the docs',
-              url: 'https://github.com/cosmos/ethermint/tree/development/docs'
+              url: 'https://github.com/defi-ventures/ethermint/tree/development/docs'
             },
             {
               title: 'Careers at ChainSafe',
               url: 'https://chainsafe.io/#careers'
             }, {
               title: 'Source code on GitHub',
-              url: 'https://github.com/cosmos/ethermint/blob/development/docs/DOCS_README.md'
+              url: 'https://github.com/defi-ventures/ethermint/blob/development/docs/DOCS_README.md'
             }
           ]
         }

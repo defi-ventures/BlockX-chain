@@ -6,8 +6,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	ethermint "github.com/cosmos/ethermint/types"
-	"github.com/cosmos/ethermint/x/evm/types"
+	ethermint "github.com/defi-ventures/ethermint/types"
+	"github.com/defi-ventures/ethermint/x/evm/types"
 )
 
 // EthereumTx implements the Msg/EthereumTx gRPC method.

@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y $PACKAGES
 
 # Set working directory for the build
-WORKDIR /go/src/github.com/cosmos/ethermint
+WORKDIR /go/src/github.com/defi-ventures/ethermint
 
 # Add source files
 COPY . .
@@ -22,9 +22,9 @@ WORKDIR /
 RUN apt-get update
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/toknd /usr/bin/toknd
-COPY --from=build-env /go/src/github.com/cosmos/ethermint/build/tokncli /usr/bin/tokncli
-COPY --from=build-env /go/src/github.com/cosmos/ethermint/scripts/start.sh /
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/toknd /usr/bin/toknd
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/tokncli /usr/bin/tokncli
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/scripts/start.sh /
 
 EXPOSE 26656 26657 1317 8545 8546
 

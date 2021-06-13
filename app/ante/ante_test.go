@@ -14,10 +14,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/cosmos/ethermint/app"
-	"github.com/cosmos/ethermint/app/ante"
-	"github.com/cosmos/ethermint/types"
-	evmtypes "github.com/cosmos/ethermint/x/evm/types"
+	"github.com/defi-ventures/ethermint/app"
+	"github.com/defi-ventures/ethermint/app/ante"
+	"github.com/defi-ventures/ethermint/types"
+	evmtypes "github.com/defi-ventures/ethermint/x/evm/types"
 )
 
 func requireValidTx(

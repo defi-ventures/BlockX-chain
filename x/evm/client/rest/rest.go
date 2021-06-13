@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	authrest "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	"github.com/cosmos/cosmos-sdk/x/auth/client/utils"
-	rpctypes "github.com/cosmos/ethermint/rpc/types"
+	rpctypes "github.com/defi-ventures/ethermint/rpc/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gorilla/mux"
 )

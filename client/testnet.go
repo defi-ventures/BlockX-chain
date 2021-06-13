@@ -36,9 +36,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/mint"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/cosmos/ethermint/crypto/hd"
-	ethermint "github.com/cosmos/ethermint/types"
-	evmtypes "github.com/cosmos/ethermint/x/evm/types"
+	"github.com/defi-ventures/ethermint/crypto/hd"
+	ethermint "github.com/defi-ventures/ethermint/types"
+	evmtypes "github.com/defi-ventures/ethermint/x/evm/types"
 )
 
 var (
