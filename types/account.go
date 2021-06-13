@@ -25,7 +25,7 @@ func init() {
 }
 
 // ----------------------------------------------------------------------------
-// Main Ethermint account
+// Main Tokn account
 // ----------------------------------------------------------------------------
 
 // EthAccount implements the auth.Account interface and embeds an

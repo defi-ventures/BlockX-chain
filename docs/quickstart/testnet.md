@@ -8,7 +8,7 @@ Learn how to deploy a local testnet or connect to an existing public one {synops
 
 ## Pre-requisite Readings
 
-- [Install Ethermint](./installation.md) {prereq}
+- [Install Tokn](./installation.md) {prereq}
 - [Install Docker](https://docs.docker.com/engine/installation/)  {prereq}
 - [Install docker-compose](https://docs.docker.com/compose/install/)  {prereq}
 
@@ -313,4 +313,4 @@ The final step is to [start the nodes](./run_node.md#start-node). Once enough vo
 
 ## Next {hide}
 
-Learn about how to setup a [validator](./validator-setup.md) node on Ethermint {hide}
+Learn about how to setup a [validator](./validator-setup.md) node on Tokn {hide}

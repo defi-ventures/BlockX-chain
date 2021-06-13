@@ -22,7 +22,7 @@ $PWD/build/tokncli config trust-node true
 # if $KEY exists it should be deleted
 $PWD/build/tokncli keys add $KEY
 
-# Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
+# Set moniker and chain-id for Tokn (Moniker can be anything, chain-id must be an integer)
 $PWD/build/toknd init $MONIKER --chain-id $CHAINID
 
 # Change parameter token denominations to atokn

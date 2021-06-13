@@ -11,7 +11,7 @@ WORKDIR /go/src/github.com/defi-ventures/ethermint
 # Add source files
 COPY . .
 
-# build Ethermint
+# build Tokn
 RUN make build-ethermint-linux
 
 # Final image

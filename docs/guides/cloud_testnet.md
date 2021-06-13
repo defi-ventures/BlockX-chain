@@ -52,9 +52,9 @@ ssh -i digital-ocean-key root@<DROPLET_IP_ADDRESS>
 
 Now you are connected to the droplet.
 
-#### Install Ethermint
+#### Install Tokn
 
-Clone and build Ethermint in the droplet using `git`:
+Clone and build Tokn in the droplet using `git`:
 
 ```bash
 go install https://github.com/defi-ventures/ethermint.git

@@ -37,7 +37,7 @@ The `x/evm` module is responsible for executing Ethereum Virtual Machine (EVM) s
    }
    ```
 
-4. Define the Ethermint `ProtoAccount` for the `AccountKeeper`
+4. Define the Tokn `ProtoAccount` for the `AccountKeeper`
 
    ```go
    func NewApp(...) *App {
@@ -92,7 +92,7 @@ The `x/evm` module is responsible for executing Ethereum Virtual Machine (EVM) s
     }
     ```
 
-9. Set the Ethermint `AnteHandler` to support EVM transactions. Note,
+9. Set the Tokn `AnteHandler` to support EVM transactions. Note,
 the default `AnteHandler` provided by the `x/evm` module depends on the `x/auth` and `x/supply`
 modules.
 
@@ -174,8 +174,8 @@ type Params struct {
 
 ### JSON-RPC
 
-See the Ethermint [JSON-RPC docs](https://docs.ethermint.zone/basics/json_rpc.html) for reference.
+See the Tokn [JSON-RPC docs](https://docs.ethermint.zone/basics/json_rpc.html) for reference.
 
 ## Documentation and Specification
 
-* Ethermint documentation: [https://docs.ethermint.zone](https://docs.ethermint.zone)
+* Tokn documentation: [https://docs.ethermint.zone](https://docs.ethermint.zone)

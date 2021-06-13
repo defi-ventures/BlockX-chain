@@ -61,7 +61,7 @@ func TestnetCmd(ctx *server.Context, cdc *codec.Codec,
 ) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "testnet",
-		Short: "Initialize files for a Ethermint testnet",
+		Short: "Initialize files for a Tokn testnet",
 		Long: `testnet will create "v" number of directories and populate each with
 necessary files (private validator, genesis, config, etc.).
 

@@ -28,7 +28,7 @@ echo $VAL_MNEMONIC | tokncli keys add $VAL_KEY --recover
 echo $USER1_MNEMONIC | tokncli keys add $USER1_KEY --recover
 echo $USER2_MNEMONIC | tokncli keys add $USER2_KEY --recover
 
-# Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
+# Set moniker and chain-id for Tokn (Moniker can be anything, chain-id must be an integer)
 toknd init $MONIKER --chain-id $CHAINID
 
 # Allocate genesis accounts (cosmos formatted addresses)

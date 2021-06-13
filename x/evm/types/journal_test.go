@@ -92,7 +92,7 @@ func (suite *JournalTestSuite) SetupTest() {
 }
 
 // setup performs a manual setup of the GoLevelDB and mounts the required IAVL stores. We use the manual
-// setup here instead of the Ethermint app test setup because the journal methods are private and using
+// setup here instead of the Tokn app test setup because the journal methods are private and using
 // the latter would result in a cycle dependency. We also want to avoid declaring the journal methods public
 // to maintain consistency with the Geth implementation.
 func (suite *JournalTestSuite) setup() {

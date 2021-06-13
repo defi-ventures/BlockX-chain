@@ -19,19 +19,19 @@ import (
 	"github.com/tendermint/tendermint/crypto/secp256k1"
 )
 
-func TestMsgEthermint(t *testing.T) {
+func TestMsgTokn(t *testing.T) {
 	addr := newSdkAddress()
 	fromAddr := newSdkAddress()
 
-	msg := NewMsgEthermint(0, &addr, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), fromAddr)
+	msg := NewMsgTokn(0, &addr, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), fromAddr)
 	require.NotNil(t, msg)
 	require.Equal(t, msg.Recipient, &addr)
 
 	require.Equal(t, msg.Route(), RouterKey)
-	require.Equal(t, msg.Type(), TypeMsgEthermint)
+	require.Equal(t, msg.Type(), TypeMsgTokn)
 }
 
-func TestMsgEthermintValidation(t *testing.T) {
+func TestMsgToknValidation(t *testing.T) {
 	testCases := []struct {
 		nonce      uint64
 		to         *sdk.AccAddress
@@ -50,7 +50,7 @@ func TestMsgEthermintValidation(t *testing.T) {
 	}
 
 	for i, tc := range testCases {
-		msg := NewMsgEthermint(tc.nonce, tc.to, tc.amount, tc.gasLimit, tc.gasPrice, tc.payload, tc.from)
+		msg := NewMsgTokn(tc.nonce, tc.to, tc.amount, tc.gasLimit, tc.gasPrice, tc.payload, tc.from)
 
 		if tc.expectPass {
 			require.Nil(t, msg.ValidateBasic(), "test: %v", i)
@@ -60,16 +60,16 @@ func TestMsgEthermintValidation(t *testing.T) {
 	}
 }
 
-func TestMsgEthermintEncodingAndDecoding(t *testing.T) {
+func TestMsgToknEncodingAndDecoding(t *testing.T) {
 	addr := newSdkAddress()
 	fromAddr := newSdkAddress()
 
-	msg := NewMsgEthermint(0, &addr, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), fromAddr)
+	msg := NewMsgTokn(0, &addr, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), fromAddr)
 
 	raw, err := ModuleCdc.MarshalBinaryBare(msg)
 	require.NoError(t, err)
 
-	var msg2 MsgEthermint
+	var msg2 MsgTokn
 	err = ModuleCdc.UnmarshalBinaryBare(raw, &msg2)
 	require.NoError(t, err)
 

@@ -34,7 +34,7 @@ type KeeperTestSuite struct {
 
 	ctx     sdk.Context
 	querier sdk.Querier
-	app     *app.EthermintApp
+	app     *app.ToknApp
 	address ethcmn.Address
 }
 

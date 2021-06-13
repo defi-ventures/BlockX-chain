@@ -4,7 +4,7 @@ order: 1
 
 # Encoding
 
-Learn about the encoding formats used on Ethermint. {synopsis}
+Learn about the encoding formats used on Tokn. {synopsis}
 
 ## Pre-requisite Readings
 
@@ -23,13 +23,13 @@ client and state serialization. All the EVM module structs that are used for sta
 ### Amino
 
 The Cosmos SDK also supports the legacy Amino encoding format for backwards compatibility with
-previous versions, specially for client encoding. Ethermint will not support Amino in the EVM module
+previous versions, specially for client encoding. Tokn will not support Amino in the EVM module
 once the migration to SDK `v0.40` is finalized.
 
 ### RLP
 
 Recursive Length Prefix ([RLP](https://eth.wiki/en/fundamentals/rlp)), is an encoding/decoding algorithm that serializes a message and
-allows for quick reconstruction of encoded data. Ethermint uses RLP to encode/decode Ethereum
+allows for quick reconstruction of encoded data. Tokn uses RLP to encode/decode Ethereum
 messages for JSON-RPC handling to conform messages to the proper Ethereum format. This allows
 messages to be encoded and decoded in the exact format as Ethereum's.
 
@@ -39,4 +39,4 @@ to sign bytes and transactions in `RLPSignBytes` and `Sign`.
 
 ## Next {hide}
 
-Learn how [pending state](./pending_state.md) is handled on Ethermint. {hide}
+Learn how [pending state](./pending_state.md) is handled on Tokn. {hide}

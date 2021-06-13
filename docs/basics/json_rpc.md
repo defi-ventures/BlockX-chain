@@ -4,7 +4,7 @@ order: 5
 
 # JSON-RPC Server
 
-Check the JSON-RPC methods and namespaces supported on Ethermint. {synopsis}
+Check the JSON-RPC methods and namespaces supported on Tokn. {synopsis}
 
 ## Pre-requisite Readings
 
@@ -56,13 +56,13 @@ Check the JSON-RPC methods and namespaces supported on Ethermint. {synopsis}
 | `eth_compileSolidity`                                                             | Eth       |             |                           |
 | `eth_compileSerpent`                                                              | Eth       |             |                           |
 | `eth_signTransaction`                                                             | Eth       |             |                           |
-| `eth_mining`                                                                      | Eth       | N/A         | Not relevant to Ethermint |
-| `eth_coinbase`                                                                    | Eth       | N/A         | Not relevant to Ethermint |
-| `eth_hashrate`                                                                    | Eth       | N/A         | Not relevant to Ethermint |
-| `eth_getUncleCountByBlockHash`                                                    | Eth       | N/A         | Not relevant to Ethermint |
-| `eth_getUncleCountByBlockNumber`                                                  | Eth       | N/A         | Not relevant to Ethermint |
-| `eth_getUncleByBlockHashAndIndex`                                                 | Eth       | N/A         | Not relevant to Ethermint |
-| `eth_getUncleByBlockNumberAndIndex`                                               | Eth       | N/A         | Not relevant to Ethermint |
+| `eth_mining`                                                                      | Eth       | N/A         | Not relevant to Tokn |
+| `eth_coinbase`                                                                    | Eth       | N/A         | Not relevant to Tokn |
+| `eth_hashrate`                                                                    | Eth       | N/A         | Not relevant to Tokn |
+| `eth_getUncleCountByBlockHash`                                                    | Eth       | N/A         | Not relevant to Tokn |
+| `eth_getUncleCountByBlockNumber`                                                  | Eth       | N/A         | Not relevant to Tokn |
+| `eth_getUncleByBlockHashAndIndex`                                                 | Eth       | N/A         | Not relevant to Tokn |
+| `eth_getUncleByBlockNumberAndIndex`                                               | Eth       | N/A         | Not relevant to Tokn |
 | [`eth_subscribe`](#eth-subscribe)                                                 | Websocket | ✔           |                           |
 | [`eth_unsubscribe`](#eth-unsubscribe)                                             | Websocket | ✔           |                           |
 | [`personal_importRawKey`](#personal-importrawkey)                                 | Personal  | ✔           |                           |
@@ -166,7 +166,7 @@ Get the web3 client version.
 curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":67}' -H "Content-Type: application/json" http://localhost:8545
 
 // Result
- {"jsonrpc":"2.0","id":1,"result":"Ethermint/0.0.0+/linux/go1.14"}
+ {"jsonrpc":"2.0","id":1,"result":"Tokn/0.0.0+/linux/go1.14"}
 ```
 
 ### web3_sha3
@@ -895,4 +895,4 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"personal_ecRecover","params":["0
 
 ## Next {hide}
 
-Learn about the Ethermint [Hard Spoon](./hard_spoon.md) functionality {hide}
+Learn about the Tokn [Hard Spoon](./hard_spoon.md) functionality {hide}

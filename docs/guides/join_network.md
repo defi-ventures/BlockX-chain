@@ -8,7 +8,7 @@ This document outlines the steps to join the public testnet hosted by [Chainsafe
 
 ## Steps
 
-1. Install the Ethermint binaries (toknd & ethermint cli)
+1. Install the Tokn binaries (toknd & ethermint cli)
 
     ```bash
     git clone https://github.com/defi-ventures/ethermint
@@ -17,7 +17,7 @@ This document outlines the steps to join the public testnet hosted by [Chainsafe
     make install
     ```
 
-2. Create an Ethermint account
+2. Create an Tokn account
 
     ```bash
     tokncli keys add <keyname>
@@ -35,7 +35,7 @@ This document outlines the steps to join the public testnet hosted by [Chainsafe
     "05aa6587f07a0c6a9a8213f0138c4a76d476418a@18.204.206.179:26656,13d4a1c16d1f427988b7c499b6d150726aaf3aa0@3.86.104.251:26656,a00db749fa51e485c8376276d29d599258052f3e@54.210.246.165:26656"
     ```
 
-5. Validate genesis and start the Ethermint network
+5. Validate genesis and start the Tokn network
 
     ```bash
     toknd validate-genesis

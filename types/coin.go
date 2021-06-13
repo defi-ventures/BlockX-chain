@@ -5,13 +5,13 @@ import (
 )
 
 const (
-	// AttoTokn defines the default coin denomination used in Ethermint in:
+	// AttoTokn defines the default coin denomination used in Tokn in:
 	//
 	// - Staking parameters: denomination used as stake in the dPoS chain
 	// - Mint parameters: denomination minted due to fee distribution rewards
 	// - Governance parameters: denomination used for spam prevention in proposal deposits
 	// - Crisis parameters: constant fee denomination used for spam prevention to check broken invariant
-	// - EVM parameters: denomination used for running EVM state transitions in Ethermint.
+	// - EVM parameters: denomination used for running EVM state transitions in Tokn.
 	AttoTokn string = "atokn"
 
 	// BaseDenomUnit defines the base denomination unit for Tokns.

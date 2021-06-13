@@ -104,7 +104,7 @@ func createAndTestGenesis(t *testing.T, cms sdk.CommitMultiStore, ak auth.Accoun
 	ms := cms.CacheMultiStore()
 	ctx := sdk.NewContext(ms, abci.Header{}, false, logger)
 
-	// Set the default Ethermint parameters to the parameter keeper store
+	// Set the default Tokn parameters to the parameter keeper store
 	evmKeeper.SetParams(ctx, evmtypes.DefaultParams())
 
 	// sort the addresses and insertion of key/value pairs matters

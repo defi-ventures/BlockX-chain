@@ -22,7 +22,7 @@ make install
 If you have issues at this step, please check that you have the latest stable version of GO installed.
 :::
 
-You will need to ensure that the version installed matches the one needed for th testnet. Check the Ethermint [release page](https://github.com/defi-ventures/ethermint/releases) for details on each release.
+You will need to ensure that the version installed matches the one needed for th testnet. Check the Tokn [release page](https://github.com/defi-ventures/ethermint/releases) for details on each release.
 
 ## Upgrade Genesis File
 
@@ -48,7 +48,7 @@ Finally, go to the [reset data](./run_node.md#reset-data) section.
 
 ### Export State to a new Genesis locally
 
-Ethermint can dump the entire application state to a JSON file. This, besides upgrades, can be
+Tokn can dump the entire application state to a JSON file. This, besides upgrades, can be
 useful for manual analysis of the state at a given height.
 
 Export state with:
@@ -94,4 +94,4 @@ toknd start
 
 ## Next {hide}
 
-Learn about how to setup a [validator](./validator-setup.md) node on Ethermint {hide}
+Learn about how to setup a [validator](./validator-setup.md) node on Tokn {hide}

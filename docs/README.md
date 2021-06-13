@@ -1,14 +1,14 @@
 <!--
 layout: home
-title: Ethermint Documentation
-description: Ethermint is a scalable and interoperable Ethereum, built on Proof-of-Stake with fast-finality.
+title: Tokn Documentation
+description: Tokn is a scalable and interoperable Ethereum, built on Proof-of-Stake with fast-finality.
 sections:
   - title: Introduction
-    desc: Read a high-level overview of Ethermint and its architecture.
+    desc: Read a high-level overview of Tokn and its architecture.
     url: /intro
     icon: ethereum-intro
   - title: Basics
-    desc: Start with the basic concepts of Ethermint, like accounts and transactions.
+    desc: Start with the basic concepts of Tokn, like accounts and transactions.
     url: /basics
     icon: basics
   - title: Core Concepts
@@ -27,7 +27,7 @@ stack:
     label: ethereum-black
     url: https://eth.wiki
   - title: Tendermint Core
-    desc: The leading BFT engine for building blockchains, powering Ethermint.
+    desc: The leading BFT engine for building blockchains, powering Tokn.
     color: "#00BB00"
     label: core
     url: http://docs.tendermint.com
@@ -36,23 +36,23 @@ footer:
 aside: false
 -->
 
-# Ethermint Documentation
+# Tokn Documentation
 
 ## Get Started
 
-- **[Introduction](./intro/overview.md)**: High-level overview of Ethermint.
+- **[Introduction](./intro/overview.md)**: High-level overview of Tokn.
 
 ## Reference
 
-- **[Basics](./basics/)**: Documentation on the basic concepts of Ethermint, like the standard anatomy of an application, the transaction lifecycle and accounts management.
-- **[Core](./core/)**: Documentation on the core concepts of Ethermint, like `encoding`, and `events`.
+- **[Basics](./basics/)**: Documentation on the basic concepts of Tokn, like the standard anatomy of an application, the transaction lifecycle and accounts management.
+- **[Core](./core/)**: Documentation on the core concepts of Tokn, like `encoding`, and `events`.
 - **[Building Modules](./building-modules/)**: Important concepts for module developers like `message`s, `keeper`s, `handler`s and `querier`s.
-- **[Interfaces](./interfaces/)**: Documentation on building interfaces for Ethermint applications.
+- **[Interfaces](./interfaces/)**: Documentation on building interfaces for Tokn applications.
 
 ## Other Resources
 
 - **[Module Directory](../x/)**: Module implementations and their respective documentation.
-- **[Ethermint API Reference](https://godoc.org/github.com/defi-ventures/ethermint)**: Godocs of Ethermint.
+- **[Tokn API Reference](https://godoc.org/github.com/defi-ventures/ethermint)**: Godocs of Tokn.
 - **[REST API spec](https://cosmos.network/rpc/)**: List of REST endpoints to interact with an full-node through REST.
 
 ## Contribute

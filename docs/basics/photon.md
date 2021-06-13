@@ -4,7 +4,7 @@ order: 4
 
 # Tokn
 
-Learn about the Tokn, Ethermint's staking token. {synopsis}
+Learn about the Tokn, Tokn's staking token. {synopsis}
 
 ## Introduction
 
@@ -12,11 +12,11 @@ Learn about the Tokn, Ethermint's staking token. {synopsis}
 The tokn's initial distribution and supply is still TBD and will be announced in the future.
 :::
 
-The tokn is the staking token used in Ethermint.
+The tokn is the staking token used in Tokn.
 
 ## Base Denomination
 
-Ethermint uses [Atto](https://en.wikipedia.org/wiki/Atto-) Tokn as the base denomination to maintain parity with Ethereum.
+Tokn uses [Atto](https://en.wikipedia.org/wiki/Atto-) Tokn as the base denomination to maintain parity with Ethereum.
 
 ```
 1 tokn = 1×10⁻¹⁸ atokn
@@ -30,4 +30,4 @@ This matches Ethereum denomination of:
 
 ## Next {hide}
 
-Learn about the supported [JSON-RPC](./json_rpc.md) methods on Ethermint {hide}
+Learn about the supported [JSON-RPC](./json_rpc.md) methods on Tokn {hide}

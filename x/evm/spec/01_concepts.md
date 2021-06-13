@@ -12,7 +12,7 @@ that provides the necessary tools to run or create a contract on a given state.
 ## State DB
 
 The `StateDB` interface from geth represents an EVM database for full state querying of both
-contracts and accounts. The concrete type that fulfills this interface on Ethermint is the
+contracts and accounts. The concrete type that fulfills this interface on Tokn is the
 `CommitStateDB`.
 
 ## State Object
@@ -32,7 +32,7 @@ The `x/evm` module `GenesisState` defines the state necessary for initializing t
 ### Genesis Accounts
 
 The `GenesisAccount` type corresponds to an adaptation of the Ethereum `GenesisAccount` type. Its
-main difference is that the one on Ethermint uses a custom `Storage` type that uses a slice instead
+main difference is that the one on Tokn uses a custom `Storage` type that uses a slice instead
 of maps for the evm `State` (due to non-determinism), and that it doesn't contain the private key
 field.
 
@@ -46,7 +46,7 @@ the same format as the ones from the SDK to make manual inspections easier on th
 
 ### Transaction Logs
 
-On every Ethermint transaction, its result contains the Ethereum `Log`s from the state machine
+On every Tokn transaction, its result contains the Ethereum `Log`s from the state machine
 execution that are used by the JSON-RPC Web3 server for for filter querying. Since Cosmos upgrades
 don't persist the transactions on the blockchain state, we need to persist the logs the EVM module
 state to prevent the queries from failing.

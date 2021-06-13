@@ -75,7 +75,7 @@ init_func() {
     echo "create and add new keys"
     "$PWD"/build/tokncli config keyring-backend test --home "$DATA_CLI_DIR$i"
     "$PWD"/build/tokncli keys add $KEY"$i" --home "$DATA_CLI_DIR$i" --no-backup --chain-id $CHAINID
-    echo "init Ethermint with moniker=$MONIKER and chain-id=$CHAINID"
+    echo "init Tokn with moniker=$MONIKER and chain-id=$CHAINID"
     "$PWD"/build/toknd init $MONIKER --chain-id $CHAINID --home "$DATA_DIR$i"
     echo "init tokncli with chain-id=$CHAINID and config it trust-node true"
     "$PWD"/build/tokncli config chain-id $CHAINID --home "$DATA_CLI_DIR$i"

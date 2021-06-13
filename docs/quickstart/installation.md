@@ -6,7 +6,7 @@ order: 1
 
 ## Binaries
 
-Clone and build Ethermint using `git`:
+Clone and build Tokn using `git`:
 
 ```bash
 git clone https://github.com/defi-ventures/ethermint.git
@@ -23,7 +23,7 @@ tokncli -h
 
 ## Docker
 
-You can build Ethermint using Docker by running:
+You can build Tokn using Docker by running:
 
 ```bash
 make docker-build
@@ -40,10 +40,10 @@ tokncli -h
 ## Releases
 
 ::: warning
-Ethermint is under VERY ACTIVE DEVELOPMENT and should be treated as pre-alpha software. This means it is not meant to be run in production, its APIs are subject to change without warning and should not be relied upon, and it should not be used to hold any value. We will remove this warning when we have a release that is stable, secure, and properly tested.
+Tokn is under VERY ACTIVE DEVELOPMENT and should be treated as pre-alpha software. This means it is not meant to be run in production, its APIs are subject to change without warning and should not be relied upon, and it should not be used to hold any value. We will remove this warning when we have a release that is stable, secure, and properly tested.
 :::
 
-You can also download a specific release available on the [Ethermint repository](https://github.com/defi-ventures/ethermint/releases)
+You can also download a specific release available on the [Tokn repository](https://github.com/defi-ventures/ethermint/releases)
 
 ## Next {hide}
 

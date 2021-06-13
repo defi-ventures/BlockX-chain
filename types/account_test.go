@@ -69,7 +69,7 @@ func (suite *AccountTestSuite) TestEthAccount_Balance() {
 
 }
 
-func (suite *AccountTestSuite) TestEthermintAccountJSON() {
+func (suite *AccountTestSuite) TestToknAccountJSON() {
 	bz, err := json.Marshal(suite.account)
 	suite.Require().NoError(err)
 
@@ -83,7 +83,7 @@ func (suite *AccountTestSuite) TestEthermintAccountJSON() {
 	suite.Require().Equal(suite.account.PubKey, a.PubKey)
 }
 
-func (suite *AccountTestSuite) TestEthermintPubKeyJSON() {
+func (suite *AccountTestSuite) TestToknPubKeyJSON() {
 	privkey, err := ethsecp256k1.GenerateKey()
 	suite.Require().NoError(err)
 	bz := privkey.PubKey().Bytes()
@@ -102,7 +102,7 @@ func (suite *AccountTestSuite) TestSecpPubKeyJSON() {
 	suite.Require().Equal(pubk, pubkey)
 }
 
-func (suite *AccountTestSuite) TestEthermintAccount_String() {
+func (suite *AccountTestSuite) TestToknAccount_String() {
 	config := sdk.GetConfig()
 	types.SetBech32Prefixes(config)
 
@@ -133,7 +133,7 @@ func (suite *AccountTestSuite) TestEthermintAccount_String() {
 	suite.Require().Contains(accountStr, bech32pubkey)
 }
 
-func (suite *AccountTestSuite) TestEthermintAccount_MarshalJSON() {
+func (suite *AccountTestSuite) TestToknAccount_MarshalJSON() {
 	bz, err := suite.account.MarshalJSON()
 	suite.Require().NoError(err)
 	suite.Require().Contains(string(bz), suite.account.EthAddress().String())

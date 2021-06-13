@@ -45,5 +45,5 @@ transactions. The main objective of this function is to:
 * Clear account cache. This clears cache of state objects to handle account changes outside of the
   EVM.
 * Store the block bloom to state. This is due for Web3 compatibility as the Ethereum headers contain
-  this type as a  field. The Ethermint RPC uses this query to construct an Ethereum Header from a
+  this type as a  field. The Tokn RPC uses this query to construct an Ethereum Header from a
   Tendermint Header.

@@ -44,7 +44,7 @@ func init() {
 	ethermint.SetBip44CoinType(config)
 }
 
-const appName = "Ethermint"
+const appName = "Tokn"
 
 var (
 	// DefaultCLIHome sets the default home directories for the application CLI
@@ -91,12 +91,12 @@ var (
 	}
 )
 
-var _ simapp.App = (*EthermintApp)(nil)
+var _ simapp.App = (*ToknApp)(nil)
 
-// EthermintApp implements an extended ABCI application. It is an application
+// ToknApp implements an extended ABCI application. It is an application
 // that may process transactions through Ethereum's EVM running atop of
 // Tendermint consensus.
-type EthermintApp struct {
+type ToknApp struct {
 	*bam.BaseApp
 	cdc *codec.Codec
 
@@ -131,8 +131,8 @@ type EthermintApp struct {
 	sm *module.SimulationManager
 }
 
-// NewEthermintApp returns a reference to a new initialized Ethermint application.
-func NewEthermintApp(
+// NewToknApp returns a reference to a new initialized Tokn application.
+func NewToknApp(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,
@@ -140,11 +140,11 @@ func NewEthermintApp(
 	skipUpgradeHeights map[int64]bool,
 	invCheckPeriod uint,
 	baseAppOptions ...func(*bam.BaseApp),
-) *EthermintApp {
+) *ToknApp {
 
 	cdc := ethermintcodec.MakeCodec(ModuleBasics)
 
-	// NOTE we use custom Ethermint transaction decoder that supports the sdk.Tx interface instead of sdk.StdTx
+	// NOTE we use custom Tokn transaction decoder that supports the sdk.Tx interface instead of sdk.StdTx
 	bApp := bam.NewBaseApp(appName, logger, db, evm.TxDecoder(cdc), baseAppOptions...)
 	bApp.SetCommitMultiStoreTracer(traceStore)
 	bApp.SetAppVersion(version.Version)
@@ -158,7 +158,7 @@ func NewEthermintApp(
 
 	tkeys := sdk.NewTransientStoreKeys(params.TStoreKey)
 
-	app := &EthermintApp{
+	app := &ToknApp{
 		BaseApp:        bApp,
 		cdc:            cdc,
 		invCheckPeriod: invCheckPeriod,
@@ -180,7 +180,7 @@ func NewEthermintApp(
 	app.subspaces[evidence.ModuleName] = app.ParamsKeeper.Subspace(evidence.DefaultParamspace)
 	app.subspaces[evm.ModuleName] = app.ParamsKeeper.Subspace(evm.DefaultParamspace)
 
-	// use custom Ethermint account for contracts
+	// use custom Tokn account for contracts
 	app.AccountKeeper = auth.NewAccountKeeper(
 		cdc, keys[auth.StoreKey], app.subspaces[auth.ModuleName], ethermint.ProtoAccount,
 	)
@@ -317,32 +317,32 @@ func NewEthermintApp(
 }
 
 // Name returns the name of the App
-func (app *EthermintApp) Name() string { return app.BaseApp.Name() }
+func (app *ToknApp) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker updates every begin block
-func (app *EthermintApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+func (app *ToknApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker updates every end block
-func (app *EthermintApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
+func (app *ToknApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
 // InitChainer updates at chain initialization
-func (app *EthermintApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *ToknApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState simapp.GenesisState
 	app.cdc.MustUnmarshalJSON(req.AppStateBytes, &genesisState)
 	return app.mm.InitGenesis(ctx, genesisState)
 }
 
 // LoadHeight loads state at a particular height
-func (app *EthermintApp) LoadHeight(height int64) error {
+func (app *ToknApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height, app.keys[bam.MainStoreKey])
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *EthermintApp) ModuleAccountAddrs() map[string]bool {
+func (app *ToknApp) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		modAccAddrs[supply.NewModuleAddress(acc).String()] = true
@@ -352,7 +352,7 @@ func (app *EthermintApp) ModuleAccountAddrs() map[string]bool {
 }
 
 // BlacklistedAccAddrs returns all the app's module account addresses black listed for receiving tokens.
-func (app *EthermintApp) BlacklistedAccAddrs() map[string]bool {
+func (app *ToknApp) BlacklistedAccAddrs() map[string]bool {
 	blacklistedAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		blacklistedAddrs[supply.NewModuleAddress(acc).String()] = !allowedReceivingModAcc[acc]
@@ -362,22 +362,22 @@ func (app *EthermintApp) BlacklistedAccAddrs() map[string]bool {
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *EthermintApp) SimulationManager() *module.SimulationManager {
+func (app *ToknApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *EthermintApp) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *ToknApp) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.keys[storeKey]
 }
 
-// Codec returns Ethermint's codec.
+// Codec returns Tokn's codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *EthermintApp) Codec() *codec.Codec {
+func (app *ToknApp) Codec() *codec.Codec {
 	return app.cdc
 }
 

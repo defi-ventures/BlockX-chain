@@ -6,7 +6,7 @@ parent:
 
 # Introduction
 
-This folder contains introduction material for Ethermint.
+This folder contains introduction material for Tokn.
 
 1. [Overview](./overview.md)
 1. [Architecture](./architecture.md)
@@ -17,4 +17,4 @@ After reading the introduction material, head over to the [basics](../basics/REA
 
 ## Next {hide}
 
-Get an high-level [overview](./overview.md) of Ethermint {hide}
+Get an high-level [overview](./overview.md) of Tokn {hide}

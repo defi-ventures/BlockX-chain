@@ -26,7 +26,7 @@ type StateDBTestSuite struct {
 	suite.Suite
 
 	ctx         sdk.Context
-	app         *app.EthermintApp
+	app         *app.ToknApp
 	stateDB     *types.CommitStateDB
 	address     ethcmn.Address
 	stateObject types.StateObject

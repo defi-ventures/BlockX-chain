@@ -51,7 +51,7 @@ echo "your mnemonic here" | tokncli keys add $KEY --recover
 ```
 
 ::: tip
-Ethermint currently only supports 24 word mnemonics.
+Tokn currently only supports 24 word mnemonics.
 :::
 
 You can generate a new key/mnemonic with:
@@ -76,7 +76,7 @@ tokncli keys -h
 
 The instructions above include commands to use `test` as the `keyring-backend`. This is an unsecured
 keyring that doesn't require entering a password and should not be used in production. Otherwise,
-Ethermint supports using a file or OS keyring backend for key storage. To create and use a file
+Tokn supports using a file or OS keyring backend for key storage. To create and use a file
 stored key instead of defaulting to the OS keyring, add the flag `--keyring-backend file` to any
 relevant command and the password prompt will occur through the command line. This can also be saved
 as a CLI config option with:
@@ -120,4 +120,4 @@ To clear all data except key storage (if keyring backend chosen) and then you ca
 
 ## Next {hide}
 
-Learn about running a Ethermint [testnet](./testnet.md) {hide}
+Learn about running a Tokn [testnet](./testnet.md) {hide}

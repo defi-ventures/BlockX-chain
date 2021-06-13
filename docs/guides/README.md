@@ -6,7 +6,7 @@ parent:
 
 # Guides
 
-This section contains different guides to use popular Ethereum tools with Ethermint.
+This section contains different guides to use popular Ethereum tools with Tokn.
 
 1. [Truffle](./truffle.md)
 2. [Metamask](./metamask.md)

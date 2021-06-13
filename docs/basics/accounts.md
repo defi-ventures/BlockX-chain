@@ -4,24 +4,24 @@ order: 1
 
 # Accounts
 
-This document describes the in-built accounts system of Ethermint. {synopsis}
+This document describes the in-built accounts system of Tokn. {synopsis}
 
 ## Pre-requisite Readings
 
 - [Cosmos SDK Accounts](https://docs.cosmos.network/master/basics/accounts.html) {prereq}
 - [Ethereum Accounts](https://ethereum.org/en/whitepaper/#ethereum-accounts) {prereq}
 
-## Ethermint Accounts
+## Tokn Accounts
 
-Ethermint defines its own custom `Account` type that uses Ethereum's ECDSA secp256k1 curve for keys. This
+Tokn defines its own custom `Account` type that uses Ethereum's ECDSA secp256k1 curve for keys. This
 satisfies the [EIP84](https://github.com/ethereum/EIPs/issues/84) for full [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) paths.
-The root HD path for Ethermint-based accounts is `m/44'/60'/0'/0`.
+The root HD path for Tokn-based accounts is `m/44'/60'/0'/0`.
 
 +++ https://github.com/defi-ventures/ethermint/blob/v0.1.0/types/account.go#L31-L36
 
 ## Addresses and Public Keys
 
-There are 3 main types of `Addresses`/`PubKeys` available by default on Ethermint:
+There are 3 main types of `Addresses`/`PubKeys` available by default on Tokn:
 
 - Addresses and Keys for **accounts**, which identify users (e.g. the sender of a `message`). They are derived using the **`eth_secp256k1`** curve.
 - Addresses and Keys for **validator operators**, which identify the operators of validators. They are derived using the **`eth_secp256k1`** curve.
@@ -82,4 +82,4 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":1
 
 ## Next {hide}
 
-Learn about Ethermint [transactions](./transactions.md) {hide}
+Learn about Tokn [transactions](./transactions.md) {hide}
