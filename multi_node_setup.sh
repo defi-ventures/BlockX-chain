@@ -1,8 +1,10 @@
 #!/bin/bash
 
-KEY="tokntestkey"
+KEY1="tokntestkey-1"
+KEY2="tokntestkey-2"
 CHAINID="tokn-179"
-MONIKER="localtestnet-1"
+MONIKER1="localtestnet-1"
+MONIKER2="localtestnet-2"
 
 # remove existing daemon and client
 rm -rf ~/.tokn*
@@ -18,10 +20,11 @@ make build
 ./build/tokncli config trust-node true
 
 # if $KEY exists it should be deleted
-./build/tokncli keys add $KEY
+./build/tokncli keys add $KEY1
+./build/tokncli keys add $KEY2
 
 # Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
-./build/toknd init $MONIKER --chain-id $CHAINID
+./build/toknd init $MONIKER1 --chain-id $CHAINID
 
 # Change parameter token denominations to atokn
 cat $HOME/.toknd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="atokn"' > $HOME/.toknd/config/tmp_genesis.json && mv $HOME/.toknd/config/tmp_genesis.json $HOME/.toknd/config/genesis.json
@@ -45,10 +48,12 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 1000000000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY1 -a) 5000000000000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY2 -a) 5000000000000000000000000000atokn
 
 # Sign genesis transaction
-./build/toknd gentx --name $KEY --amount=1000000000000000000000000atokn --keyring-backend test
+./build/toknd gentx --name $KEY1 --amount=10000000000000000000000atokn --keyring-backend test
+./build/toknd gentx --name $KEY2 --amount=10000000000000000000000atokn --keyring-backend test
 
 # Collect genesis tx
 ./build/toknd collect-gentxs
