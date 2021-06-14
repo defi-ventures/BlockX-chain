@@ -1,7 +1,7 @@
 #!/bin/bash
 
 KEY="tokndevkey"
-CHAINID="tokn-1"
+CHAINID="tokn-11"
 MONIKER="localdevnet"
 
 # remove existing daemon and client
@@ -21,7 +21,8 @@ make build
 ./build/toknd init $MONIKER --chain-id $CHAINID
 
 # if $KEY exists it should be deleted
-echo "media tourist guitar mixed aunt coyote armed tank wage often muffin shed render tumble rose" | ./build/tokncli keys add $KEY --recover
+# ./build/tokncli keys add $KEY
+echo "goat shallow knock rent blanket audit plunge bacon hurt effort joy behind reduce denial winner tomorrow impulse random crane gift gallery company lawn message" | ./build/tokncli keys add $KEY --recover
 
 # Change parameter token denominations to atokn
 cat $HOME/.toknd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="atokn"' > $HOME/.toknd/config/tmp_genesis.json && mv $HOME/.toknd/config/tmp_genesis.json $HOME/.toknd/config/genesis.json
