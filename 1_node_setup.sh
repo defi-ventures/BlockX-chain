@@ -1,8 +1,8 @@
 #!/bin/bash
 
-KEY="tokntestkey"
-CHAINID="tokn-179"
-MONIKER="localtestnet-1"
+KEY="tokndevkey"
+CHAINID="tokn-1"
+MONIKER="localdevnet"
 
 # remove existing daemon and client
 rm -rf ~/.tokn*
@@ -17,11 +17,11 @@ make build
 ./build/tokncli config indent true
 ./build/tokncli config trust-node true
 
-# if $KEY exists it should be deleted
-./build/tokncli keys add $KEY
-
 # Set moniker and chain-id for Tokn (Moniker can be anything, chain-id must be an integer)
 ./build/toknd init $MONIKER --chain-id $CHAINID
+
+# if $KEY exists it should be deleted
+echo "" | ./build/tokncli keys add $KEY --recover
 
 # Change parameter token denominations to atokn
 cat $HOME/.toknd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="atokn"' > $HOME/.toknd/config/tmp_genesis.json && mv $HOME/.toknd/config/tmp_genesis.json $HOME/.toknd/config/genesis.json
@@ -45,10 +45,10 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 10000000000000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 10000000000000000000atokn
 
 # Sign genesis transaction
-./build/toknd gentx --name $KEY --amount=10000000000000000000000atokn --keyring-backend test
+./build/toknd gentx --name $KEY --amount=10000000000000000000atokn --keyring-backend test
 
 # Collect genesis tx
 ./build/toknd collect-gentxs
