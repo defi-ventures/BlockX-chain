@@ -21,7 +21,7 @@ make build
 ./build/toknd init $MONIKER --chain-id $CHAINID
 
 # if $KEY exists it should be deleted
-echo "" | ./build/tokncli keys add $KEY --recover
+echo "media tourist guitar mixed aunt coyote armed tank wage often muffin shed render tumble rose" | ./build/tokncli keys add $KEY --recover
 
 # Change parameter token denominations to atokn
 cat $HOME/.toknd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="atokn"' > $HOME/.toknd/config/tmp_genesis.json && mv $HOME/.toknd/config/tmp_genesis.json $HOME/.toknd/config/genesis.json
@@ -45,7 +45,7 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 10000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 1000000000000000000000atokn
 
 # Sign genesis transaction
 ./build/toknd gentx --name $KEY --amount=10000000000000000000atokn --keyring-backend test
@@ -58,7 +58,7 @@ fi
 
 # Command to run the rest server in a different terminal/window
 echo -e '\nrun the following command in a different terminal/window to run the REST server and JSON-RPC:'
-echo -e "./build/tokncli rest-server --laddr \"tcp://0.0.0.0:8545\" --unlock-key $KEY --chain-id $CHAINID --trace --rpc-api eth,net,web3,personal,debug --unsafe-cors\n"
+echo -e "./build/tokncli rest-server --laddr \"tcp://0.0.0.0:8545\" --unlock-key $KEY --chain-id $CHAINID --trace --rpc-api eth,net,web3,personal --unsafe-cors\n"
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
 ./build/toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
