@@ -1,8 +1,8 @@
 #!/bin/bash
 
-KEY="tokndevkey"
+KEY="tokndevkey-1"
 CHAINID="tokn-11"
-MONIKER="localdevnet"
+MONIKER="localdevnet-1"
 
 # remove existing daemon and client
 rm -rf ~/.tokn*
@@ -46,10 +46,10 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 1000000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 1000000000000000000000000atokn
 
 # Sign genesis transaction
-./build/toknd gentx --name $KEY --amount=10000000000000000000atokn --keyring-backend test
+./build/toknd gentx --name $KEY --amount=100000000000000000000atokn --keyring-backend test
 
 # Collect genesis tx
 ./build/toknd collect-gentxs
