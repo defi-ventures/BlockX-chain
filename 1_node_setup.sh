@@ -1,8 +1,11 @@
 #!/bin/bash
 
-KEY="tokndevkey-1"
+KEY="tokntestkey-1"
 CHAINID="tokn-11"
-MONIKER="localdevnet-1"
+MONIKER="localtestnet-1"
+MNEMONIC=""
+GENESIS_ACCOUNT_AMOUNT=1000000000000000000atokn
+STAKE_AMOUNT=1000000000000000000atokn
 
 # remove existing daemon and client
 rm -rf ~/.tokn*
@@ -21,8 +24,7 @@ make build
 ./build/toknd init $MONIKER --chain-id $CHAINID
 
 # if $KEY exists it should be deleted
-# ./build/tokncli keys add $KEY
-echo "goat shallow knock rent blanket audit plunge bacon hurt effort joy behind reduce denial winner tomorrow impulse random crane gift gallery company lawn message" | ./build/tokncli keys add $KEY --recover
+echo $MNEMONIC | ./build/tokncli keys add $KEY --recover
 
 # Change parameter token denominations to atokn
 cat $HOME/.toknd/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="atokn"' > $HOME/.toknd/config/tmp_genesis.json && mv $HOME/.toknd/config/tmp_genesis.json $HOME/.toknd/config/genesis.json
@@ -35,7 +37,6 @@ cat $HOME/.toknd/config/genesis.json | jq '.consensus_params["block"]["time_iota
 
 if [[ $1 == "pending" ]]; then
     echo "pending mode on; block times will be set to 30s."
-    # sed -i 's/create_empty_blocks_interval = "0s"/create_empty_blocks_interval = "30s"/g' $HOME/.toknd/config/config.toml
     sed -i 's/timeout_propose = "3s"/timeout_propose = "30s"/g' $HOME/.toknd/config/config.toml
     sed -i 's/timeout_propose_delta = "500ms"/timeout_propose_delta = "5s"/g' $HOME/.toknd/config/config.toml
     sed -i 's/timeout_prevote = "1s"/timeout_prevote = "10s"/g' $HOME/.toknd/config/config.toml
@@ -46,10 +47,10 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Allocate genesis accounts (cosmos formatted addresses)
-./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) 1000000000000000000000000atokn
+./build/toknd add-genesis-account $(./build/tokncli keys show $KEY -a) $GENESIS_ACCOUNT_AMOUNT
 
 # Sign genesis transaction
-./build/toknd gentx --name $KEY --amount=100000000000000000000atokn --keyring-backend test
+./build/toknd gentx --name $KEY --amount=$STAKE_AMOUNT --keyring-backend test
 
 # Collect genesis tx
 ./build/toknd collect-gentxs
