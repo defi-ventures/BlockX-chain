@@ -1,8 +1,11 @@
 ***Public RPC details***
+
 URL - https://testnet.blockxnet.com
+
 Chain ID - 11
 
 ***Chain ID (testnet v1)***
+
 tokn-11
 
 ***Steps to setup a validator for testnet v1***
