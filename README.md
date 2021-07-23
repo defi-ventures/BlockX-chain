@@ -1,3 +1,12 @@
+***Public RPC details***
+URL - https://testnet.blockxnet.com
+Chain ID - 11
+
+***Chain ID (testnet v1)***
+tokn-11
+
+***Steps to setup a validator for testnet v1***
+
 1. Clone the repository
 
 ```bash
@@ -5,28 +14,22 @@ cd ~/
 git clone https://github.com/defi-ventures/ethermint.git
 ```
 
-2. Install the following
+2. Install the following for setup
 
 ```bash
 apt install make build-essential jq
-```
-
-3. Install golang - v1.16
-
-```bash
 wget https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
-go version
 ```
 
-4. Change the value of KEY, CHAINID, MONIKER, MNEMONIC in validator_node_setup.sh
+3. Change the value of KEY, CHAINID, MONIKER, MNEMONIC in validator_node_setup.sh before running the validator node setup
 ```bash
 cd ~/ethermint
 ./validator_node_setup.sh
 ```
 
-5. Replace the genesis file in ~/.toknd/config/
+4. Replace the genesis file in ~/.toknd/config/
 ```
 {
   "genesis_time": "2021-07-20T06:42:41.262043053Z",
@@ -260,28 +263,30 @@ cd ~/ethermint
 }
 ```
 
-6. Add the following in seeds, persistent_peers in ~/.toknd/config/config.toml
+5. Add the following in seeds, persistent_peers in ~/.toknd/config/config.toml
 ```
 ed2e17c9c59650b866703634ddd1d3c5f0d8ac5c@52.71.20.235:26656,191b86f40e5ee4d723e8e44ad2a5885addc3c875@54.166.134.59:26656,522ddc5b2aa13c8694ee35d4bf35be7c11e9d927@54.85.252.200:26656
 ```
 
-7.
+6. Reset the local chain config
 ```bash
 cd ~/ethermint
 ./build/toknd unsafe-reset-all
 ```
 
-8. Start node
+7. Start local node and check if its syncing
 ```bash
 ./build/toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
 ```
 
-9. Start RPC
+8. Start RPC
 ```bash
 ./build/tokncli rest-server --laddr "tcp://0.0.0.0:8545" --unlock-key <> --chain-id <> --trace --rpc-api eth,net,web3,personal --unsafe-cors
 ```
 
-9. Run create validator command
+9. Acquire test tokens from the faucet
+
+10. Run create validator command to become a validator in the network (change values in commands accordingly)
 ```bash
 ./build/tokncli tx staking create-validator --amount=<> --pubkey=$(./build/toknd tendermint show-validator) --moniker=<> --chain-id=<> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1" --gas="auto" --from=<>
 ```
