@@ -268,7 +268,7 @@ cd ~/ethermint
 
 5. Add the following in seeds, persistent_peers in ~/.toknd/config/config.toml
 ```
-ed2e17c9c59650b866703634ddd1d3c5f0d8ac5c@52.71.20.235:26656,191b86f40e5ee4d723e8e44ad2a5885addc3c875@54.166.134.59:26656,522ddc5b2aa13c8694ee35d4bf35be7c11e9d927@54.85.252.200:26656
+e1fb167e3adaf5abfbb59827d997ebdb2830e894@52.71.20.235:26656,f188e07c2a6745cf015101f129e3418ff0fc3c70@54.166.134.59:26656
 ```
 
 6. Reset the local chain config
@@ -287,9 +287,9 @@ cd ~/ethermint
 ./build/tokncli rest-server --laddr "tcp://0.0.0.0:8545" --unlock-key <> --chain-id <> --trace --rpc-api eth,net,web3,personal --unsafe-cors
 ```
 
-9. Acquire test tokens from the faucet
+9. Acquire test tokens from the team for the address generated from the mnemonic
 
 10. Run create validator command to become a validator in the network (change values in commands accordingly)
 ```bash
-./build/tokncli tx staking create-validator --amount=<> --pubkey=$(./build/toknd tendermint show-validator) --moniker=<> --chain-id=<> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1" --gas="auto" --from=<>
+./build/tokncli tx staking create-validator --amount=<> --pubkey=$(./build/toknd tendermint show-validator) --moniker=<> --chain-id=<> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1" --gas="auto" --from=<key>
 ```
