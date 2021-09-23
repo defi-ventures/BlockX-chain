@@ -35,7 +35,7 @@ cd ~/ethermint
 4. Replace the genesis file in ~/.toknd/config/
 ```
 {
-  "genesis_time": "2021-07-20T06:42:41.262043053Z",
+  "genesis_time": "2021-09-09T06:56:24.65263405Z",
   "chain_id": "tokn-11",
   "consensus_params": {
     "block": {
@@ -55,11 +55,75 @@ cd ~/ethermint
   },
   "app_hash": "",
   "app_state": {
+    "distribution": {
+      "params": {
+        "community_tax": "0.020000000000000000",
+        "base_proposer_reward": "0.010000000000000000",
+        "bonus_proposer_reward": "0.040000000000000000",
+        "withdraw_addr_enabled": true
+      },
+      "fee_pool": {
+        "community_pool": []
+      },
+      "delegator_withdraw_infos": [],
+      "previous_proposer": "",
+      "outstanding_rewards": [],
+      "validator_accumulated_commissions": [],
+      "validator_historical_rewards": [],
+      "validator_current_rewards": [],
+      "delegator_starting_infos": [],
+      "validator_slash_events": []
+    },
+    "evidence": {
+      "params": {
+        "max_evidence_age": "120000000000"
+      },
+      "evidence": []
+    },
+    "upgrade": {},
     "crisis": {
       "constant_fee": {
         "denom": "atokn",
         "amount": "1000"
       }
+    },
+    "params": null,
+    "evm": {
+      "accounts": [],
+      "txs_logs": [],
+      "chain_config": {
+        "homestead_block": "0",
+        "dao_fork_block": "0",
+        "dao_fork_support": true,
+        "eip150_block": "0",
+        "eip150_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "eip155_block": "0",
+        "eip158_block": "0",
+        "byzantium_block": "0",
+        "constantinople_block": "0",
+        "petersburg_block": "0",
+        "istanbul_block": "0",
+        "muir_glacier_block": "0",
+        "yoloV2_block": "-1",
+        "ewasm_block": "-1"
+      },
+      "params": {
+        "evm_denom": "atokn",
+        "enable_create": true,
+        "enable_call": true,
+        "extra_eips": null
+      }
+    },
+    "slashing": {
+      "params": {
+        "signed_blocks_window": "100",
+        "min_signed_per_window": "0.500000000000000000",
+        "downtime_jail_duration": "600000000000",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.010000000000000000"
+      },
+      "signing_infos": {},
+      "missed_blocks": {}
     },
     "auth": {
       "params": {
@@ -89,39 +153,23 @@ cd ~/ethermint
         }
       ]
     },
+    "mint": {
+      "minter": {
+        "inflation": "0.130000000000000000",
+        "annual_provisions": "0.000000000000000000"
+      },
+      "params": {
+        "mint_denom": "atokn",
+        "inflation_rate_change": "0.130000000000000000",
+        "inflation_max": "0.200000000000000000",
+        "inflation_min": "0.070000000000000000",
+        "goal_bonded": "0.670000000000000000",
+        "blocks_per_year": "6311520"
+      }
+    },
     "supply": {
       "supply": []
     },
-    "gov": {
-      "starting_proposal_id": "1",
-      "deposits": null,
-      "votes": null,
-      "proposals": null,
-      "deposit_params": {
-        "min_deposit": [
-          {
-            "denom": "atokn",
-            "amount": "10000000"
-          }
-        ],
-        "max_deposit_period": "172800000000000"
-      },
-      "voting_params": {
-        "voting_period": "172800000000000"
-      },
-      "tally_params": {
-        "quorum": "0.334000000000000000",
-        "threshold": "0.500000000000000000",
-        "veto": "0.334000000000000000"
-      }
-    },
-    "evidence": {
-      "params": {
-        "max_evidence_age": "120000000000"
-      },
-      "evidence": []
-    },
-    "params": null,
     "staking": {
       "params": {
         "unbonding_time": "1814400000000000",
@@ -137,46 +185,6 @@ cd ~/ethermint
       "unbonding_delegations": null,
       "redelegations": null,
       "exported": false
-    },
-    "mint": {
-      "minter": {
-        "inflation": "0.130000000000000000",
-        "annual_provisions": "0.000000000000000000"
-      },
-      "params": {
-        "mint_denom": "atokn",
-        "inflation_rate_change": "0.130000000000000000",
-        "inflation_max": "0.200000000000000000",
-        "inflation_min": "0.070000000000000000",
-        "goal_bonded": "0.670000000000000000",
-        "blocks_per_year": "6311520"
-      }
-    },
-    "evm": {
-      "accounts": [],
-      "txs_logs": [],
-      "chain_config": {
-        "homestead_block": "0",
-        "dao_fork_block": "0",
-        "dao_fork_support": true,
-        "eip150_block": "0",
-        "eip150_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-        "eip155_block": "0",
-        "eip158_block": "0",
-        "byzantium_block": "0",
-        "constantinople_block": "0",
-        "petersburg_block": "0",
-        "istanbul_block": "0",
-        "muir_glacier_block": "0",
-        "yoloV2_block": "-1",
-        "ewasm_block": "-1"
-      },
-      "params": {
-        "evm_denom": "atokn",
-        "enable_create": true,
-        "enable_call": true,
-        "extra_eips": null
-      }
     },
     "bank": {
       "send_enabled": true
@@ -205,7 +213,7 @@ cd ~/ethermint
                   "min_self_delegation": "1",
                   "delegator_address": "eth12fkhumzzmdjlph5dcj5hemzqlc663pf5k8md7y",
                   "validator_address": "ethvaloper12fkhumzzmdjlph5dcj5hemzqlc663pf5g49es6",
-                  "pubkey": "ethvalconspub1zcjduepq0x7c84749sua9f2jk9e5uf8u5d3kyw3e3hsvu2cxhjhn9kawd6sssf6mfz",
+                  "pubkey": "ethvalconspub1zcjduepqhxvfhdta8vxk75g05awqu435dwhf60n6pqj32sk6q298w8ekzzuqnn7lfq",
                   "value": {
                     "denom": "atokn",
                     "amount": "10000000000000000000000"
@@ -223,44 +231,36 @@ cd ~/ethermint
                   "type": "ethermint/PubKeyEthSecp256k1",
                   "value": "A5ZbQPTCM4L6oSiHsIbUQf0dUguqR4r07DOtXxbtTvUn"
                 },
-                "signature": "K3rddzIX4ONVzqSvskqkvRFAtON86THKUGe1CApm99xNMEcnriqGQoRRGy4KiFDWW1yFqfQ1rOmkEgzdlGknVgE="
+                "signature": "NLkFUkYyKt5TCNBCaUmwTvTX8agE6ewShcP74CeTzl9BRCnC7W9m6XbfnR9NruGXzOKQYXljmytWwe93MLRgIgA="
               }
             ],
-            "memo": "ed2e17c9c59650b866703634ddd1d3c5f0d8ac5c@10.12.20.170:26656"
+            "memo": "e1fb167e3adaf5abfbb59827d997ebdb2830e894@10.12.20.170:26656"
           }
         }
       ]
     },
-    "distribution": {
-      "params": {
-        "community_tax": "0.020000000000000000",
-        "base_proposer_reward": "0.010000000000000000",
-        "bonus_proposer_reward": "0.040000000000000000",
-        "withdraw_addr_enabled": true
+    "gov": {
+      "starting_proposal_id": "1",
+      "deposits": null,
+      "votes": null,
+      "proposals": null,
+      "deposit_params": {
+        "min_deposit": [
+          {
+            "denom": "atokn",
+            "amount": "10000000"
+          }
+        ],
+        "max_deposit_period": "172800000000000"
       },
-      "fee_pool": {
-        "community_pool": []
+      "voting_params": {
+        "voting_period": "172800000000000"
       },
-      "delegator_withdraw_infos": [],
-      "previous_proposer": "",
-      "outstanding_rewards": [],
-      "validator_accumulated_commissions": [],
-      "validator_historical_rewards": [],
-      "validator_current_rewards": [],
-      "delegator_starting_infos": [],
-      "validator_slash_events": []
-    },
-    "upgrade": {},
-    "slashing": {
-      "params": {
-        "signed_blocks_window": "100",
-        "min_signed_per_window": "0.500000000000000000",
-        "downtime_jail_duration": "600000000000",
-        "slash_fraction_double_sign": "0.050000000000000000",
-        "slash_fraction_downtime": "0.010000000000000000"
-      },
-      "signing_infos": {},
-      "missed_blocks": {}
+      "tally_params": {
+        "quorum": "0.334000000000000000",
+        "threshold": "0.500000000000000000",
+        "veto": "0.334000000000000000"
+      }
     }
   }
 }
