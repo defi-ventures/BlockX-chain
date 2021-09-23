@@ -1,3 +1,8 @@
+***System Requirements***
+OS - ubuntu 18.04
+Memory - 4 GB RAM
+CPU - 2vCPU
+
 ***Public RPC details***
 
 URL - https://testnet.blockxnet.com
@@ -26,7 +31,8 @@ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 ```
 
-3. Change the value of KEY, CHAINID, MONIKER, MNEMONIC in validator_node_setup.sh before running the validator node setup
+3. Change the value of KEY, CHAINID, MONIKER, MNEMONIC in validator_node_setup.sh before running the validator node setup.
+You need to generate a mnemonic for the setup
 ```bash
 cd ~/ethermint
 ./validator_node_setup.sh
@@ -289,7 +295,8 @@ cd ~/ethermint
 
 9. Acquire test tokens from the team for the address generated from the mnemonic
 
-10. Run create validator command to become a validator in the network (change values in commands accordingly)
+10. Run create validator command to become a validator in the network after the blockchain syncs completely(change values in commands accordingly).
+Amount should be of the format - <x>atokn
 ```bash
-./build/tokncli tx staking create-validator --amount=<> --pubkey=$(./build/toknd tendermint show-validator) --moniker=<> --chain-id=<> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1" --gas="auto" --from=<key>
+./build/tokncli tx staking create-validator --amount=<> --pubkey=$(./build/toknd tendermint show-validator) --moniker=<> --chain-id=<> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1" --gas="auto" --from=<KEY>
 ```
