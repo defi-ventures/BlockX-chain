@@ -323,7 +323,7 @@ cd ~/ethermint
 
 8. Start RPC (in a different terminal)
 ```bash
-./build/tokncli rest-server --laddr "tcp://0.0.0.0:8545" --unlock-key <> --chain-id <> --trace --rpc-api eth,net,web3,personal --unsafe-cors
+./build/tokncli rest-server --laddr "tcp://0.0.0.0:8545" --chain-id <> --trace --rpc-api eth,net,web3,personal --unsafe-cors
 ```
 
 9. Acquire test tokens from the team for the address generated from the mnemonic
