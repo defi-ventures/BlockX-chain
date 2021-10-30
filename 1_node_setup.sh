@@ -3,7 +3,7 @@
 KEY="blockxtestkey-1"
 CHAINID="blockx-11"
 MONIKER="localtestnet-1"
-MNEMONIC="remain excuse foster city mouse detect huge phone omit dirt soldier kit neglect autumn found"
+MNEMONIC=""
 GENESIS_ACCOUNT_AMOUNT=1000000000000000000000000000abcx
 STAKE_AMOUNT=10000000000000000000000abcx
 
