@@ -59,8 +59,8 @@ func main() {
 	ctx := server.NewDefaultContext()
 
 	rootCmd := &cobra.Command{
-		Use:               "toknd",
-		Short:             "Tokn App Daemon (server)",
+		Use:               "blockxd",
+		Short:             "BlockX App Daemon (server)",
 		PersistentPreRunE: server.PersistentPreRunEFn(ctx),
 	}
 	// CLI commands to initialize the chain
@@ -97,7 +97,7 @@ func main() {
 }
 
 func newApp(logger log.Logger, db dbm.DB, traceStore io.Writer) abci.Application {
-	return app.NewToknApp(
+	return app.NewBlockXApp(
 		logger,
 		db,
 		traceStore,
@@ -113,16 +113,16 @@ func newApp(logger log.Logger, db dbm.DB, traceStore io.Writer) abci.Application
 func exportAppStateAndTMValidators(
 	logger log.Logger, db dbm.DB, traceStore io.Writer, height int64, forZeroHeight bool, jailWhiteList []string,
 ) (json.RawMessage, []tmtypes.GenesisValidator, error) {
-	var ethermintApp *app.ToknApp
+	var ethermintApp *app.BlockXApp
 
 	if height != -1 {
-		ethermintApp = app.NewToknApp(logger, db, traceStore, false, map[int64]bool{}, 0)
+		ethermintApp = app.NewBlockXApp(logger, db, traceStore, false, map[int64]bool{}, 0)
 
 		if err := ethermintApp.LoadHeight(height); err != nil {
 			return nil, nil, err
 		}
 	} else {
-		ethermintApp = app.NewToknApp(logger, db, traceStore, true, map[int64]bool{}, 0)
+		ethermintApp = app.NewBlockXApp(logger, db, traceStore, true, map[int64]bool{}, 0)
 	}
 
 	return ethermintApp.ExportAppStateAndValidators(forZeroHeight, jailWhiteList)

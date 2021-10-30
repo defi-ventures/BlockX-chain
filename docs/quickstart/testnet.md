@@ -8,7 +8,7 @@ Learn how to deploy a local testnet or connect to an existing public one {synops
 
 ## Pre-requisite Readings
 
-- [Install Tokn](./installation.md) {prereq}
+- [Install BlockX](./installation.md) {prereq}
 - [Install Docker](https://docs.docker.com/engine/installation/)  {prereq}
 - [Install docker-compose](https://docs.docker.com/compose/install/)  {prereq}
 
@@ -25,21 +25,21 @@ $MONIKER=testing
 $KEY=mykey
 $CHAINID="ethermint-1"
 
-toknd init $MONIKER --chain-id=$CHAINID
+blockxd init $MONIKER --chain-id=$CHAINID
 ```
 
 ::: warning
 Monikers can contain only ASCII characters. Using Unicode characters will render your node unreachable.
 :::
 
-You can edit this `moniker` later, in the `$(HOME)/.toknd/config/config.toml` file:
+You can edit this `moniker` later, in the `$(HOME)/.blockxd/config/config.toml` file:
 
 ```toml
 # A custom human readable name for this node
 moniker = "<your_custom_moniker>"
 ```
 
-You can edit the `$HOME/.toknd/config/app.toml` file in order to enable the anti spam mechanism and reject incoming transactions with less than the minimum gas prices:
+You can edit the `$HOME/.blockxd/config/app.toml` file in order to enable the anti spam mechanism and reject incoming transactions with less than the minimum gas prices:
 
 ```toml
 # This is a TOML config file.
@@ -49,7 +49,7 @@ You can edit the `$HOME/.toknd/config/app.toml` file in order to enable the anti
 
 # The minimum gas prices a validator is willing to accept for processing a
 # transaction. A transaction's fees must meet the minimum of any denomination
-# specified in this config (e.g. 10atokn).
+# specified in this config (e.g. 10abcx).
 
 minimum-gas-prices = ""
 ```
@@ -58,21 +58,21 @@ minimum-gas-prices = ""
 
 ```bash
 # Create a key to hold your account
-tokncli keys add $KEY
+blockxcli keys add $KEY
 
 # Add that key into the genesis.app_state.accounts array in the genesis file
 # NOTE: this command lets you set the number of coins. Make sure this account has some coins
 # with the genesis.app_state.staking.params.bond_denom denom, the default is staking
-toknd add-genesis-account $(tokncli keys show validator -a) 1000000000stake,10000000000atokn
+blockxd add-genesis-account $(blockxcli keys show validator -a) 1000000000stake,10000000000abcx
 
 # Generate the transaction that creates your validator
-toknd gentx --name $KEY
+blockxd gentx --name $KEY
 
 # Add the generated bonding transaction to the genesis file
-toknd collect-gentxs
+blockxd collect-gentxs
 
 # Finally, check the correctness of the genesis.json file
-toknd validate-genesis
+blockxd validate-genesis
 ```
 
 ### Run Testnet
@@ -80,7 +80,7 @@ toknd validate-genesis
 Now its safe to start the daemon:
 
 ```bash
-toknd start
+blockxd start
 ```
 
 You can then stop the node using Ctrl+C.
@@ -95,7 +95,7 @@ To build start a 4 node testnet run:
 make localnet-start
 ```
 
-This command creates a 4-node network using the `tokndnode` Docker image.
+This command creates a 4-node network using the `blockxdnode` Docker image.
 The ports for each node are found in this table:
 
 | Node ID          | P2P Port | Tendermint RPC Port | REST/ Ethereum JSON-RPC Port | WebSocket Port |
@@ -116,10 +116,10 @@ The command above  command will run containers in the background using Docker co
 ```bash
 ...
 Creating network "chainsafe-ethermint_localnet" with driver "bridge"
-Creating tokndnode0 ... done
-Creating tokndnode2 ... done
-Creating tokndnode1 ... done
-Creating tokndnode3 ... done
+Creating blockxdnode0 ... done
+Creating blockxdnode2 ... done
+Creating blockxdnode1 ... done
+Creating blockxdnode3 ... done
 ```
 
 
@@ -134,55 +134,55 @@ make localnet-stop
 ### Configuration
 
 The `make localnet-start` creates files for a 4-node testnet in `./build` by
-calling the `toknd testnet` command. This outputs a handful of files in the
+calling the `blockxd testnet` command. This outputs a handful of files in the
 `./build` directory:
 
 ```bash
 tree -L 3 build/
 
 build/
-├── tokncli
-├── toknd
+├── blockxcli
+├── blockxd
 ├── gentxs
 │   ├── node0.json
 │   ├── node1.json
 │   ├── node2.json
 │   └── node3.json
 ├── node0
-│   ├── tokncli
+│   ├── blockxcli
 │   │   ├── key_seed.json
 │   │   └── keyring-test-cosmos
-│   └── toknd
+│   └── blockxd
 │       ├── config
 │       ├── data
-│       └── toknd.log
+│       └── blockxd.log
 ├── node1
-│   ├── tokncli
+│   ├── blockxcli
 │   │   ├── key_seed.json
 │   │   └── keyring-test-cosmos
-│   └── toknd
+│   └── blockxd
 │       ├── config
 │       ├── data
-│       └── toknd.log
+│       └── blockxd.log
 ├── node2
-│   ├── tokncli
+│   ├── blockxcli
 │   │   ├── key_seed.json
 │   │   └── keyring-test-cosmos
-│   └── toknd
+│   └── blockxd
 │       ├── config
 │       ├── data
-│       └── toknd.log
+│       └── blockxd.log
 └── node3
-    ├── tokncli
+    ├── blockxcli
     │   ├── key_seed.json
     │   └── keyring-test-cosmos
-    └── toknd
+    └── blockxd
         ├── config
         ├── data
-        └── toknd.log
+        └── blockxd.log
 ```
 
-Each `./build/nodeN` directory is mounted to the `/toknd` directory in each container.
+Each `./build/nodeN` directory is mounted to the `/blockxd` directory in each container.
 
 ### Logging
 
@@ -190,10 +190,10 @@ In order to see the logs of a particular node you can use the following command:
 
 ```bash
 # node 0: daemon logs
-docker exec tokndnode0 tail toknd.log
+docker exec blockxdnode0 tail blockxd.log
 
 # node 0: REST & RPC logs
-docker exec tokndnode0 tail tokncli.log
+docker exec blockxdnode0 tail blockxcli.log
 ```
 
 The logs for the daemon will look like:
@@ -231,7 +231,7 @@ You can also watch logs as they are produced via Docker with the `--follow` (`-f
 example:
 
 ```bash
-docker logs -f tokndnode0
+docker logs -f blockxdnode0
 ```
 
 ### Interact With the Testnet
@@ -258,18 +258,18 @@ Additional instructions on how to interact with the WebSocket can be found on th
 
 ### Keys & Accounts
 
-To interact with `tokncli` and start querying state or creating txs, you use the
-`tokncli` directory of any given node as your `home`, for example:
+To interact with `blockxcli` and start querying state or creating txs, you use the
+`blockxcli` directory of any given node as your `home`, for example:
 
 ```bash
-tokncli keys list --home ./build/node0/tokncli
+blockxcli keys list --home ./build/node0/blockxcli
 ```
 
 Now that accounts exists, you may create new accounts and send those accounts
 funds!
 
 ::: tip
-**Note**: Each node's seed is located at `./build/nodeN/tokncli/key_seed.json` and can be restored to the CLI using the `tokncli keys add --restore` command
+**Note**: Each node's seed is located at `./build/nodeN/blockxcli/key_seed.json` and can be restored to the CLI using the `blockxcli keys add --restore` command
 :::
 
 ### Special Binaries
@@ -293,17 +293,17 @@ If you are looking to connect to a persistent public testnet. You will need to m
 If you want to start a network from scratch, you will need to start the [genesis procedure](#genesis-procedure) by creating a `genesis.json` and submit + collect the genesis transactions from the [validators](./validator-setup.md).
 :::
 
-If you want to connect to an existing testnet, fetch the testnet's `genesis.json` file and copy it into the `toknd`'s config directory (i.e `$HOME/.toknd/config/genesis.json`).
+If you want to connect to an existing testnet, fetch the testnet's `genesis.json` file and copy it into the `blockxd`'s config directory (i.e `$HOME/.blockxd/config/genesis.json`).
 
 Then verify the correctness of the genesis configuration file:
 
 ```bash
-toknd validate-genesis
+blockxd validate-genesis
 ```
 
 #### Add Seed Nodes
 
-Your node needs to know how to find peers. You'll need to add healthy seed nodes to `$HOME/.toknd/config/config.toml`. If those seeds aren't working, you can find more seeds and persistent peers on an existing explorer.
+Your node needs to know how to find peers. You'll need to add healthy seed nodes to `$HOME/.blockxd/config/config.toml`. If those seeds aren't working, you can find more seeds and persistent peers on an existing explorer.
 
 For more information on seeds and peers, you can the Tendermint [P2P documentation](https://docs.tendermint.com/master/spec/p2p/peer.html).
 
@@ -313,4 +313,4 @@ The final step is to [start the nodes](./run_node.md#start-node). Once enough vo
 
 ## Next {hide}
 
-Learn about how to setup a [validator](./validator-setup.md) node on Tokn {hide}
+Learn about how to setup a [validator](./validator-setup.md) node on BlockX {hide}

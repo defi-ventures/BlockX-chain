@@ -26,7 +26,7 @@ to keep your binaries and configuration files.
 In another terminal window or tab, run the Ethereum JSON-RPC server as well as the SDK REST server:
 
 ```bash
-tokncli rest-server --laddr "tcp://localhost:8545" --unlock-key mykey --chain-id 8
+blockxcli rest-server --laddr "tcp://localhost:8545" --unlock-key mykey --chain-id 8
 ```
 
 ## Manual deployment
@@ -39,50 +39,50 @@ The instructions for setting up a brand new full node from scratch are the the s
 To start your node, just type:
 
 ```bash
-toknd start
+blockxd start
 ```
 
 ## Key Management
 
-To run a node with the same key every time: replace `tokncli keys add $KEY` in `./init.sh` with:
+To run a node with the same key every time: replace `blockxcli keys add $KEY` in `./init.sh` with:
 
 ```bash
-echo "your mnemonic here" | tokncli keys add $KEY --recover
+echo "your mnemonic here" | blockxcli keys add $KEY --recover
 ```
 
 ::: tip
-Tokn currently only supports 24 word mnemonics.
+BlockX currently only supports 24 word mnemonics.
 :::
 
 You can generate a new key/mnemonic with:
 
 ```bash
-tokncli keys add $KEY
+blockxcli keys add $KEY
 ```
 
 To export your ethermint key as an ethereum private key (for use with Metamask for example):
 
 ```bash
-tokncli keys unsafe-export-eth-key $KEY
+blockxcli keys unsafe-export-eth-key $KEY
 ```
 
 For more about the available key commands, use the `--help` flag
 
 ```bash
-tokncli keys -h
+blockxcli keys -h
 ```
 
 ### Keyring backend options
 
 The instructions above include commands to use `test` as the `keyring-backend`. This is an unsecured
 keyring that doesn't require entering a password and should not be used in production. Otherwise,
-Tokn supports using a file or OS keyring backend for key storage. To create and use a file
+BlockX supports using a file or OS keyring backend for key storage. To create and use a file
 stored key instead of defaulting to the OS keyring, add the flag `--keyring-backend file` to any
 relevant command and the password prompt will occur through the command line. This can also be saved
 as a CLI config option with:
 
 ```bash
-tokncli config keyring-backend file
+blockxcli config keyring-backend file
 ```
 
 ## Clearing data from chain
@@ -92,7 +92,7 @@ tokncli config keyring-backend file
 Alternatively, you can **reset** the blockchain database, remove the node's address book files, and reset the `priv_validator.json` to the genesis state.
 
 ::: danger
-If you are running a **validator node**, always be careful when doing `toknd unsafe-reset-all`. You should never use this command if you are not switching `chain-id`.
+If you are running a **validator node**, always be careful when doing `blockxd unsafe-reset-all`. You should never use this command if you are not switching `chain-id`.
 :::
 
 ::: danger
@@ -102,15 +102,15 @@ If you are running a **validator node**, always be careful when doing `toknd uns
 First, remove the outdated files and reset the data.
 
 ```bash
-rm $HOME/.toknd/config/addrbook.json $HOME/.toknd/config/genesis.json
-toknd unsafe-reset-all
+rm $HOME/.blockxd/config/addrbook.json $HOME/.blockxd/config/genesis.json
+blockxd unsafe-reset-all
 ```
 
 Your node is now in a pristine state while keeping the original `priv_validator.json` and `config.toml`. If you had any sentry nodes or full nodes setup before, your node will still try to connect to them, but may fail if they haven't also been upgraded.
 
 ### Delete Data
 
-Data for the Daemon and CLI binaries should be stored at `~/.toknd` and `~/.tokncli`, respectively by default. To **delete** the existing binaries and configuration, run:
+Data for the Daemon and CLI binaries should be stored at `~/.blockxd` and `~/.blockxcli`, respectively by default. To **delete** the existing binaries and configuration, run:
 
 ```bash
 rm -rf ~/.emint*
@@ -120,4 +120,4 @@ To clear all data except key storage (if keyring backend chosen) and then you ca
 
 ## Next {hide}
 
-Learn about running a Tokn [testnet](./testnet.md) {hide}
+Learn about running a BlockX [testnet](./testnet.md) {hide}

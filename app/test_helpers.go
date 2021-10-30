@@ -8,10 +8,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 )
 
-// Setup initializes a new ToknApp. A Nop logger is set in ToknApp.
-func Setup(isCheckTx bool) *ToknApp {
+// Setup initializes a new BlockXApp. A Nop logger is set in BlockXApp.
+func Setup(isCheckTx bool) *BlockXApp {
 	db := dbm.NewMemDB()
-	app := NewToknApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, 0)
+	app := NewBlockXApp(log.NewNopLogger(), db, nil, true, map[int64]bool{}, 0)
 
 	if !isCheckTx {
 		// init chain must be called to stop deliverState from being nil

@@ -25,7 +25,7 @@ func NewDefaultGenesisState() simapp.GenesisState {
 
 // ExportAppStateAndValidators exports the state of the application for a genesis
 // file.
-func (app *ToknApp) ExportAppStateAndValidators(
+func (app *BlockXApp) ExportAppStateAndValidators(
 	forZeroHeight bool, jailWhiteList []string,
 ) (appState json.RawMessage, validators []tmtypes.GenesisValidator, err error) {
 	// Creates context with current height and checks txs for ctx to be usable by start of next block
@@ -50,7 +50,7 @@ func (app *ToknApp) ExportAppStateAndValidators(
 // prepare for fresh start at zero height
 // NOTE zero height genesis is a temporary feature which will be deprecated
 //      in favour of export at a block height
-func (app *ToknApp) prepForZeroHeightGenesis(ctx sdk.Context, jailWhiteList []string) {
+func (app *BlockXApp) prepForZeroHeightGenesis(ctx sdk.Context, jailWhiteList []string) {
 	applyWhiteList := false
 
 	//Check if there is a whitelist

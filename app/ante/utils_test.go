@@ -26,7 +26,7 @@ type AnteTestSuite struct {
 	suite.Suite
 
 	ctx         sdk.Context
-	app         *app.ToknApp
+	app         *app.BlockXApp
 	anteHandler sdk.AnteHandler
 }
 
@@ -51,11 +51,11 @@ func newTestMsg(addrs ...sdk.AccAddress) *sdk.TestMsg {
 }
 
 func newTestCoins() sdk.Coins {
-	return sdk.NewCoins(ethermint.NewToknCoinInt64(500000000))
+	return sdk.NewCoins(ethermint.NewBlockXCoinInt64(500000000))
 }
 
 func newTestStdFee() auth.StdFee {
-	return auth.NewStdFee(220000, sdk.NewCoins(ethermint.NewToknCoinInt64(150)))
+	return auth.NewStdFee(220000, sdk.NewCoins(ethermint.NewBlockXCoinInt64(150)))
 }
 
 // GenerateAddress generates an Ethereum address.

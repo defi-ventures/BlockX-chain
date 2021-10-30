@@ -11,7 +11,7 @@ If you want to open a PR on the Cosmos SDK to update the documentation, please f
 
 ## Docs Build Workflow
 
-The documentation for Tokn is hosted at https://docs.ethermint.zone/
+The documentation for BlockX is hosted at https://docs.ethermint.zone/
 
 built from the files in this (`/docs`) directory for
 [master](https://github.com/defi-ventures/ethermint/tree/master/docs).

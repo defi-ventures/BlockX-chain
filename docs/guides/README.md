@@ -6,7 +6,7 @@ parent:
 
 # Guides
 
-This section contains different guides to use popular Ethereum tools with Tokn.
+This section contains different guides to use popular Ethereum tools with BlockX.
 
 1. [Truffle](./truffle.md)
 2. [Metamask](./metamask.md)

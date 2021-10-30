@@ -4,27 +4,27 @@ order: 2
 
 # Metamask
 
-Connect your Metamask wallet with Tokn on a localnet mode. {synopsis}
+Connect your Metamask wallet with BlockX on a localnet mode. {synopsis}
 
 ## Start node and REST server
 
-Start the Tokn node using your terminal:
+Start the BlockX node using your terminal:
 
 ```bash
-toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info"
+blockxd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info"
 ```
 
 ::: tip
-You can also start a node from scratch by running `./init.sh` from the Tokn repository directory. This will generate a key called `mykey` that you can use on the next step.
+You can also start a node from scratch by running `./init.sh` from the BlockX repository directory. This will generate a key called `mykey` that you can use on the next step.
 :::
 
 In another tab start the REST server. Here replace `mykey` with the name of the key that you want to use and set the `chain-id` the chain identifier of your application.
 
 ```bash
-tokncli rest-server --laddr "tcp://localhost:8545" --unlock-key mykey --chain-id 1
+blockxcli rest-server --laddr "tcp://localhost:8545" --unlock-key mykey --chain-id 1
 ```
 
-## Adding a custom Network for Tokn
+## Adding a custom Network for BlockX
 
 One of the main limitations of using the default `Localhost 8545` network is that the tokens will be represented as `ETH`.
 
@@ -44,17 +44,17 @@ Now you can export your private key from the terminal using the following comman
 to replace `mykey` with the name of the key that you want to export:
 
 ```bash
-tokncli keys unsafe-export-eth-key mykey
+blockxcli keys unsafe-export-eth-key mykey
 ```
 
 Go back to the browser and select the `Private Key` option. Then paste the private key exported from
 the `unsafe-export-eth-key` command.
 
-Your account balance should show up as `1 ATOKN` and do transfers as usual.
+Your account balance should show up as `1 ABCX` and do transfers as usual.
 
 ::: tip
 If it takes some time to load the balance of the account, change the network to `Main Ethereum
-Network` (or any other than `Localhost 8545` or `Tokn`) and then switch back to `Tokn`.
+Network` (or any other than `Localhost 8545` or `BlockX`) and then switch back to `BlockX`.
 :::
 
 ## Downloading State
@@ -63,4 +63,4 @@ to see metamask logs, go to top right circle -> settings -> advanced -> download
 
 ## Known issues
 
-Currently, it's not possible to add custom tokens (even for ATokns) unless you deploy a token contract (eg: ERC20).
+Currently, it's not possible to add custom tokens (even for ABlockXs) unless you deploy a token contract (eg: ERC20).

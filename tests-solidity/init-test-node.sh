@@ -15,39 +15,39 @@ USER2_MNEMONIC="maximum display century economy unlock van census kite error hea
 # remove existing daemon and client
 rm -rf ~/.ethermint*
 
-tokncli config keyring-backend test
+blockxcli config keyring-backend test
 
 # Set up config for CLI
-tokncli config chain-id $CHAINID
-tokncli config output json
-tokncli config indent true
-tokncli config trust-node true
+blockxcli config chain-id $CHAINID
+blockxcli config output json
+blockxcli config indent true
+blockxcli config trust-node true
 
 # Import keys from mnemonics
-echo $VAL_MNEMONIC | tokncli keys add $VAL_KEY --recover
-echo $USER1_MNEMONIC | tokncli keys add $USER1_KEY --recover
-echo $USER2_MNEMONIC | tokncli keys add $USER2_KEY --recover
+echo $VAL_MNEMONIC | blockxcli keys add $VAL_KEY --recover
+echo $USER1_MNEMONIC | blockxcli keys add $USER1_KEY --recover
+echo $USER2_MNEMONIC | blockxcli keys add $USER2_KEY --recover
 
-# Set moniker and chain-id for Tokn (Moniker can be anything, chain-id must be an integer)
-toknd init $MONIKER --chain-id $CHAINID
+# Set moniker and chain-id for BlockX (Moniker can be anything, chain-id must be an integer)
+blockxd init $MONIKER --chain-id $CHAINID
 
 # Allocate genesis accounts (cosmos formatted addresses)
-toknd add-genesis-account $(tokncli keys show $VAL_KEY -a) 1000000000000000000000atokn,10000000000000000stake
-toknd add-genesis-account $(tokncli keys show $USER1_KEY -a) 1000000000000000000000atokn,10000000000000000stake
-toknd add-genesis-account $(tokncli keys show $USER2_KEY -a) 1000000000000000000000atokn,10000000000000000stake
+blockxd add-genesis-account $(blockxcli keys show $VAL_KEY -a) 1000000000000000000000abcx,10000000000000000stake
+blockxd add-genesis-account $(blockxcli keys show $USER1_KEY -a) 1000000000000000000000abcx,10000000000000000stake
+blockxd add-genesis-account $(blockxcli keys show $USER2_KEY -a) 1000000000000000000000abcx,10000000000000000stake
 
 # Sign genesis transaction
-toknd gentx --name $VAL_KEY --keyring-backend test
+blockxd gentx --name $VAL_KEY --keyring-backend test
 
 # Collect genesis tx
-toknd collect-gentxs
+blockxd collect-gentxs
 
 # Run this to ensure everything worked and that the genesis file is setup correctly
-toknd validate-genesis
+blockxd validate-genesis
 
 # Command to run the rest server in a different terminal/window
 echo -e '\nrun the following command in a different terminal/window to run the REST server and JSON-RPC:'
-echo -e "tokncli rest-server --laddr \"tcp://localhost:8545\" --wsport 8546 --unlock-key $VAL_KEY,$USER1_KEY,$USER2_KEY --chain-id $CHAINID --trace\n"
+echo -e "blockxcli rest-server --laddr \"tcp://localhost:8545\" --wsport 8546 --unlock-key $VAL_KEY,$USER1_KEY,$USER2_KEY --chain-id $CHAINID --trace\n"
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
+blockxd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace

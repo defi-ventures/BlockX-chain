@@ -185,7 +185,7 @@ func (api *PublicEthereumAPI) Hashrate() hexutil.Uint64 {
 	return 0
 }
 
-// GasPrice returns the current gas price based on Tokn's gas price oracle.
+// GasPrice returns the current gas price based on BlockX's gas price oracle.
 func (api *PublicEthereumAPI) GasPrice() *hexutil.Big {
 	api.logger.Debug("eth_gasPrice")
 	out := big.NewInt(0)
@@ -590,7 +590,7 @@ func (api *PublicEthereumAPI) doCall(
 
 	var msgs []sdk.Msg
 	// Create new call message
-	msg := evmtypes.NewMsgTokn(nonce, &toAddr, sdk.NewIntFromBigInt(value), gas,
+	msg := evmtypes.NewMsgBlockX(nonce, &toAddr, sdk.NewIntFromBigInt(value), gas,
 		sdk.NewIntFromBigInt(gasPrice), data, sdk.AccAddress(addr.Bytes()))
 	msgs = append(msgs, msg)
 
@@ -988,7 +988,7 @@ func (api *PublicEthereumAPI) GetProof(address common.Address, storageKeys []str
 		Balance:      (*hexutil.Big)(utils.MustUnmarshalBigInt(account.Balance)),
 		CodeHash:     common.BytesToHash(account.CodeHash),
 		Nonce:        hexutil.Uint64(account.Nonce),
-		StorageHash:  common.Hash{}, // Tokn doesn't have a storage hash
+		StorageHash:  common.Hash{}, // BlockX doesn't have a storage hash
 		StorageProof: storageProofs,
 	}, nil
 }
@@ -1090,7 +1090,7 @@ func (api *PublicEthereumAPI) pendingMsgs() ([]sdk.Msg, error) {
 		pendingData := pendingTx.Input
 		nonce, _ := api.accountNonce(api.clientCtx, pendingTx.From, true)
 
-		msg := evmtypes.NewMsgTokn(nonce, &pendingTo, sdk.NewIntFromBigInt(pendingValue), pendingGas,
+		msg := evmtypes.NewMsgBlockX(nonce, &pendingTo, sdk.NewIntFromBigInt(pendingValue), pendingGas,
 			sdk.NewIntFromBigInt(pendingGasPrice), pendingData, pendingFrom)
 
 		msgs = append(msgs, msg)

@@ -60,7 +60,7 @@ where `hexAddress` is an Ethereum hex address (eg: `0x11223344556677889900112233
 
 ### Ethereum JSON-RPC Events
 
-Tokn also supports the Ethereum [JSON-RPC](https://eth.wiki/json-rpc/API) filters calls to
+BlockX also supports the Ethereum [JSON-RPC](https://eth.wiki/json-rpc/API) filters calls to
 subscribe to [state logs](https://eth.wiki/json-rpc/API#eth_newfilter),
 [blocks](https://eth.wiki/json-rpc/API#eth_newblockfilter) or [pending
 transactions](https://eth.wiki/json-rpc/API#eth_newpendingtransactionfilter) changes.
@@ -90,7 +90,7 @@ To start a connection with the Tendermint websocket you need to define the addre
 flag when initializing the REST server (default `tcp://localhost:26657`):
 
 ```bash
-tokncli rest-server --laddr "tcp://localhost:8545" --node "tcp://localhost:8080" --unlock-key <my_key> --chain-id <chain_id>
+blockxcli rest-server --laddr "tcp://localhost:8545" --node "tcp://localhost:8080" --unlock-key <my_key> --chain-id <chain_id>
 ```
 
 Then, start a websocket subscription with [ws](https://github.com/hashrocket/ws)
@@ -105,17 +105,17 @@ ws ws://localhost:8080/websocket
 
 ### Ethereum Websocket
 
-Since Tokn runs uses Tendermint Core as it's consensus Engine and it's built with the Cosmos
+Since BlockX runs uses Tendermint Core as it's consensus Engine and it's built with the Cosmos
 SDK framework, it inherits the event format from them. However, in order to support the native Web3
 compatibility for websockets of the [Ethereum's
-PubSubAPI](https://geth.ethereum.org/docs/rpc/pubsub), Tokn needs to cast the Tendermint
+PubSubAPI](https://geth.ethereum.org/docs/rpc/pubsub), BlockX needs to cast the Tendermint
 responses retreived into the Ethereum types.
 
 You can start a connection with the Ethereum websocket using the `--wsport` flag when initializing
 the REST server (default `8546`):
 
 ```bash
-tokncli rest-server --laddr "tcp://localhost:8545" --wsport 8546 --unlock-key <my_key> --chain-id <chain_id>
+blockxcli rest-server --laddr "tcp://localhost:8545" --wsport 8546 --unlock-key <my_key> --chain-id <chain_id>
 ```
 
 Then, start a websocket subscription with [ws](https://github.com/hashrocket/ws)
@@ -131,4 +131,4 @@ ws ws://localhost:8546/
 
 ## Next {hide}
 
-Learn about Tokn [accounts](./../basic/accounts.md) {hide}
+Learn about BlockX [accounts](./../basic/accounts.md) {hide}

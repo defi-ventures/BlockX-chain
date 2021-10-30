@@ -63,7 +63,7 @@ func UnsafeExportEthKeyCommand() *cobra.Command {
 				return err
 			}
 
-			// Converts key to Tokn secp256 implementation
+			// Converts key to BlockX secp256 implementation
 			emintKey, ok := privKey.(ethsecp256k1.PrivKey)
 			if !ok {
 				return fmt.Errorf("invalid private key type, must be Ethereum key: %T", privKey)

@@ -1,7 +1,7 @@
-// This is a test utility for Tokn's Web3 JSON-RPC services.
+// This is a test utility for BlockX's Web3 JSON-RPC services.
 //
-// To run these tests please first ensure you have the toknd running
-// and have started the RPC service with `tokncli rest-server`.
+// To run these tests please first ensure you have the blockxd running
+// and have started the RPC service with `blockxcli rest-server`.
 //
 // You can configure the desired HOST and MODE as well
 package pending

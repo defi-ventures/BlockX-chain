@@ -34,7 +34,7 @@ type KeeperTestSuite struct {
 
 	ctx     sdk.Context
 	querier sdk.Querier
-	app     *app.ToknApp
+	app     *app.BlockXApp
 	address ethcmn.Address
 }
 
@@ -46,7 +46,7 @@ func (suite *KeeperTestSuite) SetupTest() {
 	suite.querier = keeper.NewQuerier(*suite.app.EvmKeeper)
 	suite.address = ethcmn.HexToAddress(addrHex)
 
-	balance := sdk.NewCoins(ethermint.NewToknCoin(sdk.ZeroInt()))
+	balance := sdk.NewCoins(ethermint.NewBlockXCoin(sdk.ZeroInt()))
 	acc := &ethermint.EthAccount{
 		BaseAccount: auth.NewBaseAccount(sdk.AccAddress(suite.address.Bytes()), balance, nil, 0, 0),
 		CodeHash:    ethcrypto.Keccak256(nil),

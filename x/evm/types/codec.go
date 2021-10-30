@@ -11,7 +11,7 @@ var ModuleCdc = codec.New()
 // evm module
 func RegisterCodec(cdc *codec.Codec) {
 	cdc.RegisterConcrete(MsgEthereumTx{}, "ethermint/MsgEthereumTx", nil)
-	cdc.RegisterConcrete(MsgTokn{}, "ethermint/MsgTokn", nil)
+	cdc.RegisterConcrete(MsgBlockX{}, "ethermint/MsgBlockX", nil)
 	cdc.RegisterConcrete(TxData{}, "ethermint/TxData", nil)
 	cdc.RegisterConcrete(ChainConfig{}, "ethermint/ChainConfig", nil)
 }

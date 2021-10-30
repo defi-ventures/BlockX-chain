@@ -26,7 +26,7 @@ type StateDBTestSuite struct {
 	suite.Suite
 
 	ctx         sdk.Context
-	app         *app.ToknApp
+	app         *app.BlockXApp
 	stateDB     *types.CommitStateDB
 	address     ethcmn.Address
 	stateObject types.StateObject
@@ -48,7 +48,7 @@ func (suite *StateDBTestSuite) SetupTest() {
 
 	suite.address = ethcmn.BytesToAddress(privkey.PubKey().Address().Bytes())
 
-	balance := sdk.NewCoins(ethermint.NewToknCoin(sdk.ZeroInt()))
+	balance := sdk.NewCoins(ethermint.NewBlockXCoin(sdk.ZeroInt()))
 	acc := &ethermint.EthAccount{
 		BaseAccount: auth.NewBaseAccount(sdk.AccAddress(suite.address.Bytes()), balance, nil, 0, 0),
 		CodeHash:    ethcrypto.Keccak256(nil),

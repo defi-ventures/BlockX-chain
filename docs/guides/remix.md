@@ -4,7 +4,7 @@ order: 3
 
 # Remix
 
-Set up a Remix Tokn local development environment. {synopsis}
+Set up a Remix BlockX local development environment. {synopsis}
 
 ## Pre-requisite Readings
 
@@ -12,11 +12,11 @@ Set up a Remix Tokn local development environment. {synopsis}
 - [Run a node](./../quickstart/run_node.md) {prereq}
 - [Metamask](./metamask.md) {prereq}
 
-[Remix](http://remix.ethereum.org/) is an in-browser IDE for [Solidity](https://github.com/ethereum/solidity) smart contracts. In this guide, we will learn how to deploy a contract to a running Tokn network through Remix and interact with it.
+[Remix](http://remix.ethereum.org/) is an in-browser IDE for [Solidity](https://github.com/ethereum/solidity) smart contracts. In this guide, we will learn how to deploy a contract to a running BlockX network through Remix and interact with it.
 
-## Connect Tokn account to Remix
+## Connect BlockX account to Remix
 
-First, follow the steps in the [Metamask guide](./metamask.md) to import your Tokn private key into Metamask. Start the Tokn daemon and rest server.
+First, follow the steps in the [Metamask guide](./metamask.md) to import your BlockX private key into Metamask. Start the BlockX daemon and rest server.
 
 Once that is complete, go to [Remix](http://remix.ethereum.org/). There are some contracts in the File Explorer. Select any of these contracts.  In this example, we use `Counter.sol` from the [Truffle](./truffle.md) guide. On the left-most bar, select the Solidity Compiler and compile the contract.
 

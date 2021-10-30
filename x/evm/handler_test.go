@@ -37,7 +37,7 @@ type EvmTestSuite struct {
 	ctx     sdk.Context
 	handler sdk.Handler
 	querier sdk.Querier
-	app     *app.ToknApp
+	app     *app.BlockXApp
 	codec   *codec.Codec
 }
 
@@ -141,9 +141,9 @@ func (suite *EvmTestSuite) TestHandleMsgEthereumTx() {
 	}
 }
 
-func (suite *EvmTestSuite) TestMsgTokn() {
+func (suite *EvmTestSuite) TestMsgBlockX() {
 	var (
-		tx   types.MsgTokn
+		tx   types.MsgBlockX
 		from = sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address())
 		to   = sdk.AccAddress(secp256k1.GenPrivKey().PubKey().Address())
 	)
@@ -156,7 +156,7 @@ func (suite *EvmTestSuite) TestMsgTokn() {
 		{
 			"passed",
 			func() {
-				tx = types.NewMsgTokn(0, &to, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), from)
+				tx = types.NewMsgBlockX(0, &to, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), from)
 				suite.app.EvmKeeper.SetBalance(suite.ctx, ethcmn.BytesToAddress(from.Bytes()), big.NewInt(100))
 			},
 			true,
@@ -164,7 +164,7 @@ func (suite *EvmTestSuite) TestMsgTokn() {
 		{
 			"invalid state transition",
 			func() {
-				tx = types.NewMsgTokn(0, &to, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), from)
+				tx = types.NewMsgBlockX(0, &to, sdk.NewInt(1), 100000, sdk.NewInt(2), []byte("test"), from)
 			},
 			false,
 		},

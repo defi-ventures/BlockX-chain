@@ -1,9 +1,9 @@
 # EVM Test Suite
 
-The commands (script) will clone and run the contract tests [compound, synthetix, uniswap, ...] against the Tokn's EVM. This test will comprehensively check the EVM against that of Ethereum's to verify that the results show the exact same behaviour. 
+The commands (script) will clone and run the contract tests [compound, synthetix, uniswap, ...] against the BlockX's EVM. This test will comprehensively check the EVM against that of Ethereum's to verify that the results show the exact same behaviour. 
 
 ## Test Suites
-The following are instructions on how to run the specified EVM test suite on the Tokn network.
+The following are instructions on how to run the specified EVM test suite on the BlockX network.
 
 ### Synthetix
 ```bash
@@ -98,10 +98,10 @@ npx saddle test -n ethermint
 
 ## Known Issues:
 
-1. `ether.js` is not compatible with Tokn.
-Currently, Tokn is unable to interact with the test suites and there is a slight incompatibility with ethers.js. The issue has been documented and has been in the `icebox` for some time ([https://github.com/defi-ventures/ethermint/issues/349](https://github.com/defi-ventures/ethermint/issues/349)). 
+1. `ether.js` is not compatible with BlockX.
+Currently, BlockX is unable to interact with the test suites and there is a slight incompatibility with ethers.js. The issue has been documented and has been in the `icebox` for some time ([https://github.com/defi-ventures/ethermint/issues/349](https://github.com/defi-ventures/ethermint/issues/349)). 
 
-In the future, when compatible with `ethers.js`, the test suites can be run with the simple command and will be run against the Tokn EVM. If the all of the tests pass without incident, the Tokn EVM implementation can be deemed to produce the same output as the Ethereum EVM.
+In the future, when compatible with `ethers.js`, the test suites can be run with the simple command and will be run against the BlockX EVM. If the all of the tests pass without incident, the BlockX EVM implementation can be deemed to produce the same output as the Ethereum EVM.
 
 2. For `Uniswap V3`, Hardhat tests only work for hardhat test network when loading the node accounts.
 3. For `Compound`, some tests are failing in their CI.

@@ -24,8 +24,8 @@ RUN apk add --update ca-certificates jq
 WORKDIR /root
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/toknd /usr/bin/toknd
-COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/tokncli /usr/bin/tokncli
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/blockxd /usr/bin/blockxd
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/blockxcli /usr/bin/blockxcli
 
-# Run toknd by default
-CMD ["toknd"]
+# Run blockxd by default
+CMD ["blockxd"]

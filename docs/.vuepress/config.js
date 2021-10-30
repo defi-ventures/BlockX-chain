@@ -1,6 +1,6 @@
 module.exports = {
   theme: 'cosmos',
-  title: 'Tokn Documentation',
+  title: 'BlockX Documentation',
   locales: {
     '/': {
       lang: 'en-US'
@@ -66,7 +66,7 @@ module.exports = {
         }, {
           title: 'Resources',
           children: [{
-              title: 'Tokn API Reference',
+              title: 'BlockX API Reference',
               path: 'https://godoc.org/github.com/defi-ventures/ethermint'
             },
             {
@@ -85,13 +85,13 @@ module.exports = {
       title: 'Help & Support',
       chat: {
         title: 'Developer Chat',
-        text: 'Chat with Tokn developers on Discord.',
+        text: 'Chat with BlockX developers on Discord.',
         url: 'https://discordapp.com/channels/669268347736686612',
         bg: 'linear-gradient(103.75deg, #1B1E36 0%, #22253F 100%)'
       },
       forum: {
-        title: 'Tokn Developer Forum',
-        text: 'Join the Tokn Developer Forum to learn more.',
+        title: 'BlockX Developer Forum',
+        text: 'Join the BlockX Developer Forum to learn more.',
         url: 'https://forum.cosmos.network/',
         bg: 'linear-gradient(221.79deg, #3D6B99 -1.08%, #336699 95.88%)',
         logo: 'ethereum-white'
@@ -133,7 +133,7 @@ module.exports = {
               url: 'https://docs.cosmos.network'
             },
             {
-              title: 'Tokn Docs',
+              title: 'BlockX Docs',
               url: 'https://ethereum.org/developers'
             },
             {
@@ -149,7 +149,7 @@ module.exports = {
               url: 'https://discord.gg/W8trcGV'
             },
             {
-              title: 'Tokn Forum',
+              title: 'BlockX Forum',
               url: 'https://forum.cosmos.network/c/ethermint'
             },
             {

@@ -1,5 +1,5 @@
 // Package rpc contains RPC handler methods, namespaces and utilities to start
-// Tokn's Web3-compatible JSON-RPC server.
+// BlockX's Web3-compatible JSON-RPC server.
 //
 // The list of available namespaces are:
 //

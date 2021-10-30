@@ -11,7 +11,7 @@ Chain ID - 11
 
 ***Chain ID (testnet v1)***
 
-tokn-11
+blockx-11
 
 ***Steps to setup a validator for testnet v1***
 
@@ -39,11 +39,11 @@ cd ~/ethermint
 ./validator_node_setup.sh
 ```
 
-4. Replace the genesis file in ~/.toknd/config/
+4. Replace the genesis file in ~/.blockxd/config/
 ```
 {
    "genesis_time":"2021-09-23T20:36:21.028545148Z",
-   "chain_id":"tokn-11",
+   "chain_id":"blockx-11",
    "consensus_params":{
       "block":{
          "max_bytes":"22020096",
@@ -79,7 +79,7 @@ cd ~/ethermint
          "deposit_params":{
             "min_deposit":[
                {
-                  "denom":"atokn",
+                  "denom":"abcx",
                   "amount":"10000000"
                }
             ],
@@ -118,7 +118,7 @@ cd ~/ethermint
             "ewasm_block":"-1"
          },
          "params":{
-            "evm_denom":"atokn",
+            "evm_denom":"abcx",
             "enable_create":true,
             "enable_call":true,
             "extra_eips":null
@@ -148,7 +148,7 @@ cd ~/ethermint
             "max_validators":100,
             "max_entries":7,
             "historical_entries":0,
-            "bond_denom":"atokn"
+            "bond_denom":"abcx"
          },
          "last_total_power":"0",
          "last_validator_powers":null,
@@ -184,7 +184,7 @@ cd ~/ethermint
                            "validator_address":"ethvaloper12fkhumzzmdjlph5dcj5hemzqlc663pf5g49es6",
                            "pubkey":"ethvalconspub1zcjduepqwasywlrykyjtuvg4r3yve6zh0stg5tt43cvcy44e4lkz4mmpwgcs8jsm0x",
                            "value":{
-                              "denom":"atokn",
+                              "denom":"abcx",
                               "amount":"10000000000000000000000"
                            }
                         }
@@ -216,7 +216,7 @@ cd ~/ethermint
             "annual_provisions":"0.000000000000000000"
          },
          "params":{
-            "mint_denom":"atokn",
+            "mint_denom":"abcx",
             "inflation_rate_change":"0.130000000000000000",
             "inflation_max":"0.200000000000000000",
             "inflation_min":"0.070000000000000000",
@@ -269,7 +269,7 @@ cd ~/ethermint
       },
       "crisis":{
          "constant_fee":{
-            "denom":"atokn",
+            "denom":"abcx",
             "amount":"1000"
          }
       },
@@ -289,7 +289,7 @@ cd ~/ethermint
                   "eth_address":"0x526d7e6c42DB65F0DE8dC4A97cEc40FE35A88534",
                   "coins":[
                      {
-                        "denom":"atokn",
+                        "denom":"abcx",
                         "amount":"1000000000000000000000000000"
                      }
                   ],
@@ -305,7 +305,7 @@ cd ~/ethermint
 }
 ```
 
-5. Add the following in seeds, persistent_peers in ~/.toknd/config/config.toml
+5. Add the following in seeds, persistent_peers in ~/.blockxd/config/config.toml
 ```
 af7abd00b81255e96736190d249c9266bf6590ad@52.71.20.235:26656,8d6c9fec090000627dba8e20ea3863dc05140663@54.166.134.59:26656
 ```
@@ -313,23 +313,23 @@ af7abd00b81255e96736190d249c9266bf6590ad@52.71.20.235:26656,8d6c9fec090000627dba
 6. Reset the local chain config
 ```bash
 cd ~/ethermint
-./build/toknd unsafe-reset-all
+./build/blockxd unsafe-reset-all
 ```
 
 7. Start local node and check if its syncing
 ```bash
-./build/toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
+./build/blockxd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
 ```
 
 8. Start RPC (in a different terminal)
 ```bash
-./build/tokncli rest-server --laddr "tcp://0.0.0.0:8545" --chain-id <> --trace --rpc-api eth,net,web3,personal --unsafe-cors
+./build/blockxcli rest-server --laddr "tcp://0.0.0.0:8545" --chain-id <> --trace --rpc-api eth,net,web3,personal --unsafe-cors
 ```
 
 9. Acquire test tokens from the team for the address generated from the mnemonic
 
 10. Run create validator command to become a validator in the network after the blockchain syncs completely(change values in commands accordingly).
-Amount should be of the format - <x>atokn
+Amount should be of the format - <x>abcx
 ```bash
-./build/tokncli tx staking create-validator --amount=<> --pubkey=$(./build/toknd tendermint show-validator) --moniker=<> --chain-id=<> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1" --gas="auto" --from=<>
+./build/blockxcli tx staking create-validator --amount=<> --pubkey=$(./build/blockxd tendermint show-validator) --moniker=<> --chain-id=<> --commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1" --gas="auto" --from=<>
 ```

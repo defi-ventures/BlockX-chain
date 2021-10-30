@@ -2,24 +2,24 @@
 order: 4
 -->
 
-# Tokn
+# BlockX
 
-Learn about the Tokn, Tokn's staking token. {synopsis}
+Learn about the BlockX, BlockX's staking token. {synopsis}
 
 ## Introduction
 
 ::: tip
-The tokn's initial distribution and supply is still TBD and will be announced in the future.
+The bcx's initial distribution and supply is still TBD and will be announced in the future.
 :::
 
-The tokn is the staking token used in Tokn.
+The bcx is the staking token used in BlockX.
 
 ## Base Denomination
 
-Tokn uses [Atto](https://en.wikipedia.org/wiki/Atto-) Tokn as the base denomination to maintain parity with Ethereum.
+BlockX uses [Atto](https://en.wikipedia.org/wiki/Atto-) BlockX as the base denomination to maintain parity with Ethereum.
 
 ```
-1 tokn = 1×10⁻¹⁸ atokn
+1 bcx = 1×10⁻¹⁸ abcx
 ```
 
 This matches Ethereum denomination of:
@@ -30,4 +30,4 @@ This matches Ethereum denomination of:
 
 ## Next {hide}
 
-Learn about the supported [JSON-RPC](./json_rpc.md) methods on Tokn {hide}
+Learn about the supported [JSON-RPC](./json_rpc.md) methods on BlockX {hide}

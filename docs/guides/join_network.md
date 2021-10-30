@@ -8,7 +8,7 @@ This document outlines the steps to join the public testnet hosted by [Chainsafe
 
 ## Steps
 
-1. Install the Tokn binaries (toknd & ethermint cli)
+1. Install the BlockX binaries (blockxd & ethermint cli)
 
     ```bash
     git clone https://github.com/defi-ventures/ethermint
@@ -17,30 +17,30 @@ This document outlines the steps to join the public testnet hosted by [Chainsafe
     make install
     ```
 
-2. Create an Tokn account
+2. Create an BlockX account
 
     ```bash
-    tokncli keys add <keyname>
+    blockxcli keys add <keyname>
     ```
 
 3. Copy genesis file
 
-    Follow this [link](https://gist.github.com/araskachoi/43f86f3edff23729b817e8b0bb86295a) and copy it over to the directory ~/.toknd/config/genesis.json
+    Follow this [link](https://gist.github.com/araskachoi/43f86f3edff23729b817e8b0bb86295a) and copy it over to the directory ~/.blockxd/config/genesis.json
 
 4. Add peers
 
-    Edit the file located in ~/.toknd/config/config.toml and edit line 350 (persistent_peers) to the following
+    Edit the file located in ~/.blockxd/config/config.toml and edit line 350 (persistent_peers) to the following
 
     ```toml
     "05aa6587f07a0c6a9a8213f0138c4a76d476418a@18.204.206.179:26656,13d4a1c16d1f427988b7c499b6d150726aaf3aa0@3.86.104.251:26656,a00db749fa51e485c8376276d29d599258052f3e@54.210.246.165:26656"
     ```
 
-5. Validate genesis and start the Tokn network
+5. Validate genesis and start the BlockX network
 
     ```bash
-    toknd validate-genesis
+    blockxd validate-genesis
 
-    toknd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
+    blockxd start --pruning=nothing --rpc.unsafe --log_level "main:info,state:info,mempool:info" --trace
     ```
 
     (we recommend running the command in the background for convenience)
@@ -48,7 +48,7 @@ This document outlines the steps to join the public testnet hosted by [Chainsafe
 6. Start the RPC server
 
     ```bash
-    tokncli rest-server --laddr "tcp://localhost:8545" --unlock-key $KEY --chain-id etherminttestnet-777 --trace --rpc-api "web3,eth,net"
+    blockxcli rest-server --laddr "tcp://localhost:8545" --unlock-key $KEY --chain-id etherminttestnet-777 --trace --rpc-api "web3,eth,net"
     ```
 
     where `$KEY` is the key name that was used in step 2.

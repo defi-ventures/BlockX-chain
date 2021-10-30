@@ -43,7 +43,7 @@ More information regarding gas in Cosmos SDK can be found [here](https://docs.co
 
 ## Matching EVM Gas consumption
 
-Tokn is an EVM-compatible chain that supports Ethereum Web3 tooling. For this reason, gas
+BlockX is an EVM-compatible chain that supports Ethereum Web3 tooling. For this reason, gas
 consumption must be equitable in order to accurately calculate the state transition hashes and exact
 the behaviour that would be seen on the main Ethereum network (main net).
 
@@ -51,7 +51,7 @@ In Cosmos, there are types of operations that are not triggered by transactions 
 
 ### `BeginBlock` and `EndBlock`
 
-These operations are defined by the Tendermint Core's Application Blockchain Interface (ABCI) and are defined by each Cosmos SDK module. As their name suggest, they are executed at the beginning and at the end of each block processing respectively (i.e pre and post transaction execution). Since these operations are not reflected on Ethereum, to match the the gas consumption we reset the main `GasMeter` to 0 on Tokn's EVM module.
+These operations are defined by the Tendermint Core's Application Blockchain Interface (ABCI) and are defined by each Cosmos SDK module. As their name suggest, they are executed at the beginning and at the end of each block processing respectively (i.e pre and post transaction execution). Since these operations are not reflected on Ethereum, to match the the gas consumption we reset the main `GasMeter` to 0 on BlockX's EVM module.
 
 ### `AnteHandler`
 
@@ -59,16 +59,16 @@ The Cosmos SDK [`AnteHandler`](https://docs.cosmos.network/master/basics/gas-fee
 performs basic checks prior to transaction execution. These checks are usually signature
 verification, transaction field validation, transaction fees, etc.
 
-Because the gas calculated in Tokn is done by the `IntrinsicGas` method from go-ethereum, a
+Because the gas calculated in BlockX is done by the `IntrinsicGas` method from go-ethereum, a
 special `AnteHandler` that is customized for EVM transaction fee verification is required. This
-allows Tokn to generate the expected gas costs for operations done in the network and scale the
+allows BlockX to generate the expected gas costs for operations done in the network and scale the
 gas costs as it would in the Ethereum network.
 
 ## Gas Refunds
 
 In Ethereum, gas can be specified prior to execution and the remaining gas will be refunded back to
 the user if any gas is left over - should fail with out of gas if not enough gas was provided. In
-Tokn, the concept of gas refunds does not exist and the fees paid is not refunded in part back
+BlockX, the concept of gas refunds does not exist and the fees paid is not refunded in part back
 to the user. The fees exacted on a transaction will be collected by the validator and no refunds are
 issued. Thus, it is extremely important to use the correct gas.
 
@@ -84,11 +84,11 @@ by the validators of the network, and each validator can specify a different val
 This potentially allows end users to submit 0 fee transactions if there is at least one single
 validator that is willing to include transactions with `0` gas price in their blocks proposed.
 
-For this same reason, in Tokn it is possible to send transactions with `0` fees for transaction
+For this same reason, in BlockX it is possible to send transactions with `0` fees for transaction
 types other than the ones defined by the `evm` module. EVM module transactions cannot have `0` fees
 as gas is required inherently by Ethereum. This check is done by the evm transactions
-`ValidateBasic` function as well as on the custom `AnteHandler` defined by Tokn.
+`ValidateBasic` function as well as on the custom `AnteHandler` defined by BlockX.
 
 ## Next {hide}
 
-Learn about the [Tokn](./tokn.md) token {hide}
+Learn about the [BlockX](./bcx.md) token {hide}

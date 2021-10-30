@@ -12,7 +12,7 @@ import (
 	tmtypes "github.com/tendermint/tendermint/types"
 )
 
-// NewHandler returns a handler for Tokn type messages.
+// NewHandler returns a handler for BlockX type messages.
 func NewHandler(k *Keeper) sdk.Handler {
 	return func(ctx sdk.Context, msg sdk.Msg) (result *sdk.Result, err error) {
 		snapshotStateDB := k.CommitStateDB.Copy()
@@ -49,8 +49,8 @@ func NewHandler(k *Keeper) sdk.Handler {
 		switch msg := msg.(type) {
 		case types.MsgEthereumTx:
 			result, err = handleMsgEthereumTx(ctx, k, msg)
-		case types.MsgTokn:
-			result, err = handleMsgTokn(ctx, k, msg)
+		case types.MsgBlockX:
+			result, err = handleMsgBlockX(ctx, k, msg)
 		default:
 			return nil, sdkerrors.Wrapf(sdkerrors.ErrUnknownRequest, "unrecognized %s message type: %T", ModuleName, msg)
 		}
@@ -75,8 +75,8 @@ func handleMsgEthereumTx(ctx sdk.Context, k *Keeper, msg types.MsgEthereumTx) (*
 	return res, nil
 }
 
-// handleMsgTokn handles an sdk.StdTx for an Ethereum state transition
-func handleMsgTokn(ctx sdk.Context, k *Keeper, msg types.MsgTokn) (*sdk.Result, error) {
+// handleMsgBlockX handles an sdk.StdTx for an Ethereum state transition
+func handleMsgBlockX(ctx sdk.Context, k *Keeper, msg types.MsgBlockX) (*sdk.Result, error) {
 	// parse the chainID from a string to a base-10 integer
 	chainIDEpoch, err := ethermint.ParseChainID(ctx.ChainID())
 	if err != nil {
@@ -136,7 +136,7 @@ func handleMsgTokn(ctx sdk.Context, k *Keeper, msg types.MsgTokn) (*sdk.Result, 
 
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
-			types.EventTypeTokn,
+			types.EventTypeBlockX,
 			sdk.NewAttribute(sdk.AttributeKeyAmount, msg.Amount.String()),
 		),
 		sdk.NewEvent(
@@ -149,7 +149,7 @@ func handleMsgTokn(ctx sdk.Context, k *Keeper, msg types.MsgTokn) (*sdk.Result, 
 	if msg.Recipient != nil {
 		ctx.EventManager().EmitEvent(
 			sdk.NewEvent(
-				types.EventTypeTokn,
+				types.EventTypeBlockX,
 				sdk.NewAttribute(types.AttributeKeyRecipient, msg.Recipient.String()),
 			),
 		)

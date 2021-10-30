@@ -21,7 +21,7 @@ The `x/evm` module keeps the following objects in state:
 take care of caching and storing nested states. It's the general query interface to retrieve
 contracts and accounts
 
-The Tokn `CommitStateDB` is a concrete type that implements the EVM `StateDB` interface.
+The BlockX `CommitStateDB` is a concrete type that implements the EVM `StateDB` interface.
 Instead of using a trie and database for querying and persistence, the `CommitStateDB` uses
 `KVStores` (key-value stores) and Cosmos SDK `Keeper`s to facilitate state transitions.
 
@@ -30,7 +30,7 @@ multistore that is only accessible to the EVM module.
 
 +++ https://github.com/defi-ventures/ethermint/blob/v0.3.1/x/evm/types/statedb.go#L33-L85
 
-The functionalities provided by the Tokn `StateDB` are:
+The functionalities provided by the BlockX `StateDB` are:
 
 * CRUD of `stateObject`s and accounts:
   * Balance
@@ -58,7 +58,7 @@ The functionalities provided by the Tokn `StateDB` are:
 
 State objects are used by the VM which is unable to deal with database-level errors. Any error that occurs during a database read is memoized here and will eventually be returned by `StateDB.Commit`.
 
-The Tokn `stateObject` is a concrete type that mimics the functionality from the `go-ethereum`
+The BlockX `stateObject` is a concrete type that mimics the functionality from the `go-ethereum`
 private `stateObject` type. It keeps track of the interim values for the contract bytecode, storage
 state and balance of an `EthAccount`.
 
@@ -70,7 +70,7 @@ When a `stateObject` is committed during `EndBlock`. It sets sets the account co
 
 +++ https://github.com/defi-ventures/ethermint/blob/v0.3.1/x/evm/types/state_object.go#L49-L81
 
-The functionalities provided by the Tokn `stateObject` are:
+The functionalities provided by the BlockX `stateObject` are:
 
 * Storage state getter and setter (temporary)
 * Contract bytecode getter and setter (temporary)

@@ -11,7 +11,7 @@ WORKDIR /go/src/github.com/defi-ventures/ethermint
 # Add source files
 COPY . .
 
-# build Tokn
+# build BlockX
 RUN make build-ethermint-linux
 
 # Final image
@@ -22,11 +22,11 @@ WORKDIR /
 RUN apt-get update
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/toknd /usr/bin/toknd
-COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/tokncli /usr/bin/tokncli
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/blockxd /usr/bin/blockxd
+COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/build/blockxcli /usr/bin/blockxcli
 COPY --from=build-env /go/src/github.com/defi-ventures/ethermint/scripts/start.sh /
 
 EXPOSE 26656 26657 1317 8545 8546
 
-# Run toknd by default, omit entrypoint to ease using container with tokncli
+# Run blockxd by default, omit entrypoint to ease using container with blockxcli
 ENTRYPOINT ["/bin/bash", "-c"]

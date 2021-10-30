@@ -21,7 +21,7 @@ import (
 )
 
 var (
-	_ sdk.Msg = MsgTokn{}
+	_ sdk.Msg = MsgBlockX{}
 	_ sdk.Msg = MsgEthereumTx{}
 	_ sdk.Tx  = MsgEthereumTx{}
 )
@@ -32,12 +32,12 @@ var big8 = big.NewInt(8)
 const (
 	// TypeMsgEthereumTx defines the type string of an Ethereum tranasction
 	TypeMsgEthereumTx = "ethereum"
-	// TypeMsgTokn defines the type string of Tokn message
-	TypeMsgTokn = "ethermint"
+	// TypeMsgBlockX defines the type string of BlockX message
+	TypeMsgBlockX = "ethermint"
 )
 
-// MsgTokn implements a cosmos equivalent structure for Ethereum transactions
-type MsgTokn struct {
+// MsgBlockX implements a cosmos equivalent structure for Ethereum transactions
+type MsgBlockX struct {
 	AccountNonce uint64          `json:"nonce"`
 	Price        sdk.Int         `json:"gasPrice"`
 	GasLimit     uint64          `json:"gas"`
@@ -49,12 +49,12 @@ type MsgTokn struct {
 	From sdk.AccAddress `json:"from"`
 }
 
-// NewMsgTokn returns a reference to a new Tokn transaction
-func NewMsgTokn(
+// NewMsgBlockX returns a reference to a new BlockX transaction
+func NewMsgBlockX(
 	nonce uint64, to *sdk.AccAddress, amount sdk.Int,
 	gasLimit uint64, gasPrice sdk.Int, payload []byte, from sdk.AccAddress,
-) MsgTokn {
-	return MsgTokn{
+) MsgBlockX {
+	return MsgBlockX{
 		AccountNonce: nonce,
 		Price:        gasPrice,
 		GasLimit:     gasLimit,
@@ -65,24 +65,24 @@ func NewMsgTokn(
 	}
 }
 
-func (msg MsgTokn) String() string {
+func (msg MsgBlockX) String() string {
 	return fmt.Sprintf("nonce=%d gasPrice=%d gasLimit=%d recipient=%s amount=%d data=0x%x from=%s",
 		msg.AccountNonce, msg.Price, msg.GasLimit, msg.Recipient, msg.Amount, msg.Payload, msg.From)
 }
 
 // Route should return the name of the module
-func (msg MsgTokn) Route() string { return RouterKey }
+func (msg MsgBlockX) Route() string { return RouterKey }
 
 // Type returns the action of the message
-func (msg MsgTokn) Type() string { return TypeMsgTokn }
+func (msg MsgBlockX) Type() string { return TypeMsgBlockX }
 
 // GetSignBytes encodes the message for signing
-func (msg MsgTokn) GetSignBytes() []byte {
+func (msg MsgBlockX) GetSignBytes() []byte {
 	return sdk.MustSortJSON(ModuleCdc.MustMarshalJSON(msg))
 }
 
 // ValidateBasic runs stateless checks on the message
-func (msg MsgTokn) ValidateBasic() error {
+func (msg MsgBlockX) ValidateBasic() error {
 	if msg.Price.IsZero() {
 		return sdkerrors.Wrapf(types.ErrInvalidValue, "gas price cannot be 0")
 	}
@@ -100,13 +100,13 @@ func (msg MsgTokn) ValidateBasic() error {
 }
 
 // GetSigners defines whose signature is required
-func (msg MsgTokn) GetSigners() []sdk.AccAddress {
+func (msg MsgBlockX) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{msg.From}
 }
 
 // To returns the recipient address of the transaction. It returns nil if the
 // transaction is a contract creation.
-func (msg MsgTokn) To() *ethcmn.Address {
+func (msg MsgBlockX) To() *ethcmn.Address {
 	if msg.Recipient == nil {
 		return nil
 	}

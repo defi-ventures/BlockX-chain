@@ -19,8 +19,8 @@ COMMIT := $(shell git log -1 --format='%H')
 PACKAGES=$(shell go list ./... | grep -Ev 'vendor|importer|rpc/tester')
 DOCKER_TAG = unstable
 DOCKER_IMAGE = cosmos/ethermint
-ETHERMINT_DAEMON_BINARY = toknd
-ETHERMINT_CLI_BINARY = tokncli
+ETHERMINT_DAEMON_BINARY = blockxd
+ETHERMINT_CLI_BINARY = blockxcli
 GO_MOD=GO111MODULE=on
 BUILDDIR ?= $(CURDIR)/build
 SIMAPP = ./app
@@ -165,11 +165,11 @@ docker-build:
 	docker create --name ethermint -t -i cosmos/ethermint:latest ethermint
 	# move the binaries to the ./build directory
 	mkdir -p ./build/
-	docker cp ethermint:/usr/bin/toknd ./build/ ; \
-	docker cp ethermint:/usr/bin/tokncli ./build/
+	docker cp ethermint:/usr/bin/blockxd ./build/ ; \
+	docker cp ethermint:/usr/bin/blockxcli ./build/
 
 docker-localnet:
-	docker build -f ./networks/local/ethermintnode/Dockerfile . -t toknd/node
+	docker build -f ./networks/local/ethermintnode/Dockerfile . -t blockxd/node
 
 ###############################################################################
 ###                          Tools & Dependencies                           ###
@@ -437,13 +437,13 @@ ifeq ($(OS),Windows_NT)
 	mkdir build &
 	@$(MAKE) docker-localnet
 
-	IF not exist "build/node0/$(ETHERMINT_DAEMON_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\ethermint\Z toknd/node "toknd testnet --v 4 -o /ethermint --starting-ip-address 192.168.10.2 --keyring-backend=test"
+	IF not exist "build/node0/$(ETHERMINT_DAEMON_BINARY)/config/genesis.json" docker run --rm -v $(CURDIR)/build\ethermint\Z blockxd/node "blockxd testnet --v 4 -o /ethermint --starting-ip-address 192.168.10.2 --keyring-backend=test"
 	docker-compose up -d
 else
 	mkdir -p ./build/
 	@$(MAKE) docker-localnet
 
-	if ! [ -f build/node0/$(ETHERMINT_DAEMON_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/ethermint:Z toknd/node "toknd testnet --v 4 -o /ethermint --starting-ip-address 192.168.10.2 --keyring-backend=test"; fi
+	if ! [ -f build/node0/$(ETHERMINT_DAEMON_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/ethermint:Z blockxd/node "blockxd testnet --v 4 -o /ethermint --starting-ip-address 192.168.10.2 --keyring-backend=test"; fi
 	docker-compose up -d
 endif
 
@@ -459,15 +459,15 @@ localnet-clean:
 localnet-unsafe-reset:
 	docker-compose down
 ifeq ($(OS),Windows_NT)
-	@docker run --rm -v $(CURDIR)/build\ethermint\Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node0/toknd"
-	@docker run --rm -v $(CURDIR)/build\ethermint\Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node1/toknd"
-	@docker run --rm -v $(CURDIR)/build\ethermint\Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node2/toknd"
-	@docker run --rm -v $(CURDIR)/build\ethermint\Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node3/toknd"
+	@docker run --rm -v $(CURDIR)/build\ethermint\Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node0/blockxd"
+	@docker run --rm -v $(CURDIR)/build\ethermint\Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node1/blockxd"
+	@docker run --rm -v $(CURDIR)/build\ethermint\Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node2/blockxd"
+	@docker run --rm -v $(CURDIR)/build\ethermint\Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node3/blockxd"
 else
-	@docker run --rm -v $(CURDIR)/build:/ethermint:Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node0/toknd"
-	@docker run --rm -v $(CURDIR)/build:/ethermint:Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node1/toknd"
-	@docker run --rm -v $(CURDIR)/build:/ethermint:Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node2/toknd"
-	@docker run --rm -v $(CURDIR)/build:/ethermint:Z toknd/node "toknd unsafe-reset-all --home=/ethermint/node3/toknd"
+	@docker run --rm -v $(CURDIR)/build:/ethermint:Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node0/blockxd"
+	@docker run --rm -v $(CURDIR)/build:/ethermint:Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node1/blockxd"
+	@docker run --rm -v $(CURDIR)/build:/ethermint:Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node2/blockxd"
+	@docker run --rm -v $(CURDIR)/build:/ethermint:Z blockxd/node "blockxd unsafe-reset-all --home=/ethermint/node3/blockxd"
 endif
 
 .PHONY: build-docker-local-ethermint localnet-start localnet-stop

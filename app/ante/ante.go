@@ -87,7 +87,7 @@ func sigGasConsumer(
 	}
 }
 
-// AccountSetupDecorator sets an account to state if it's not stored already. This only applies for MsgTokn.
+// AccountSetupDecorator sets an account to state if it's not stored already. This only applies for MsgBlockX.
 type AccountSetupDecorator struct {
 	ak auth.AccountKeeper
 }
@@ -99,7 +99,7 @@ func NewAccountSetupDecorator(ak auth.AccountKeeper) AccountSetupDecorator {
 	}
 }
 
-// AnteHandle sets an account for MsgTokn (evm) if the sender is registered.
+// AnteHandle sets an account for MsgBlockX (evm) if the sender is registered.
 // NOTE: Since the account is set without any funds, the message execution will
 // fail if the validator requires a minimum fee > 0.
 func (asd AccountSetupDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate bool, next sdk.AnteHandler) (sdk.Context, error) {
@@ -109,8 +109,8 @@ func (asd AccountSetupDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate
 	}
 
 	for _, msg := range msgs {
-		if msgTokn, ok := msg.(evmtypes.MsgTokn); ok {
-			setupAccount(asd.ak, ctx, msgTokn.From)
+		if msgBlockX, ok := msg.(evmtypes.MsgBlockX); ok {
+			setupAccount(asd.ak, ctx, msgBlockX.From)
 		}
 	}
 

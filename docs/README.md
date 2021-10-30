@@ -1,14 +1,14 @@
 <!--
 layout: home
-title: Tokn Documentation
-description: Tokn is a scalable and interoperable Ethereum, built on Proof-of-Stake with fast-finality.
+title: BlockX Documentation
+description: BlockX is a scalable and interoperable Ethereum, built on Proof-of-Stake with fast-finality.
 sections:
   - title: Introduction
-    desc: Read a high-level overview of Tokn and its architecture.
+    desc: Read a high-level overview of BlockX and its architecture.
     url: /intro
     icon: ethereum-intro
   - title: Basics
-    desc: Start with the basic concepts of Tokn, like accounts and transactions.
+    desc: Start with the basic concepts of BlockX, like accounts and transactions.
     url: /basics
     icon: basics
   - title: Core Concepts
@@ -27,7 +27,7 @@ stack:
     label: ethereum-black
     url: https://eth.wiki
   - title: Tendermint Core
-    desc: The leading BFT engine for building blockchains, powering Tokn.
+    desc: The leading BFT engine for building blockchains, powering BlockX.
     color: "#00BB00"
     label: core
     url: http://docs.tendermint.com
@@ -36,23 +36,23 @@ footer:
 aside: false
 -->
 
-# Tokn Documentation
+# BlockX Documentation
 
 ## Get Started
 
-- **[Introduction](./intro/overview.md)**: High-level overview of Tokn.
+- **[Introduction](./intro/overview.md)**: High-level overview of BlockX.
 
 ## Reference
 
-- **[Basics](./basics/)**: Documentation on the basic concepts of Tokn, like the standard anatomy of an application, the transaction lifecycle and accounts management.
-- **[Core](./core/)**: Documentation on the core concepts of Tokn, like `encoding`, and `events`.
+- **[Basics](./basics/)**: Documentation on the basic concepts of BlockX, like the standard anatomy of an application, the transaction lifecycle and accounts management.
+- **[Core](./core/)**: Documentation on the core concepts of BlockX, like `encoding`, and `events`.
 - **[Building Modules](./building-modules/)**: Important concepts for module developers like `message`s, `keeper`s, `handler`s and `querier`s.
-- **[Interfaces](./interfaces/)**: Documentation on building interfaces for Tokn applications.
+- **[Interfaces](./interfaces/)**: Documentation on building interfaces for BlockX applications.
 
 ## Other Resources
 
 - **[Module Directory](../x/)**: Module implementations and their respective documentation.
-- **[Tokn API Reference](https://godoc.org/github.com/defi-ventures/ethermint)**: Godocs of Tokn.
+- **[BlockX API Reference](https://godoc.org/github.com/defi-ventures/ethermint)**: Godocs of BlockX.
 - **[REST API spec](https://cosmos.network/rpc/)**: List of REST endpoints to interact with an full-node through REST.
 
 ## Contribute

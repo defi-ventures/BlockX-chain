@@ -8,7 +8,7 @@ The evm module contains the following parameters:
 
 | Key            | Type   | Default Value |
 |----------------|--------|---------------|
-| `EVMDenom`     | string | `"atokn"`   |
+| `EVMDenom`     | string | `"abcx"`   |
 | `EnableCreate` | bool   | `true`        |
 | `EnableCall`   | bool   | `true`        |
 | `ExtraEIPs`    | []int  | TBD           |
@@ -25,10 +25,10 @@ The EVM Denom is used on the following cases:
 * `stateObject`: to track the `evm_denom` balance of the object account.
 * `CommitStateDB`: to update account balance from an existing state object.
 
-For example, on Ethereum, the `evm_denom` would be `ETH`. In the case of Tokn, the default denomination is the [atto tokn](./../../../docs/basics/tokn.md). In terms of precision, the `TOKN` and `ETH` share the same value, _i.e_ `1 TOKN = 10^18 atto tokn` and `1 ETH = 10^18 wei`.
+For example, on Ethereum, the `evm_denom` would be `ETH`. In the case of BlockX, the default denomination is the [atto bcx](./../../../docs/basics/bcx.md). In terms of precision, the `BCX` and `ETH` share the same value, _i.e_ `1 BCX = 10^18 atto bcx` and `1 ETH = 10^18 wei`.
 
 ::: danger
-SDK applications that want to import the EVM module as a dependency will need to set their own `evm_denom` (i.e not `"atokn"`).
+SDK applications that want to import the EVM module as a dependency will need to set their own `evm_denom` (i.e not `"abcx"`).
 :::
 
 ## Enable Create

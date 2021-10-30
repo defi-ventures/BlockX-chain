@@ -9,7 +9,7 @@
     .intro
       .p {{$frontmatter.description}}
     .h2 Getting Started
-    .p__alt Read all about Tokn or dive straight into the code with guides.
+    .p__alt Read all about BlockX or dive straight into the code with guides.
     .features
       router-link(to="/quickstart").features__item.features__item__light
         .features__item__image
@@ -24,10 +24,10 @@
         .features__item__text
           .features__item__text__h2 use
           .features__item__text__h1 Guides
-          .features__item__text__p Follow guides to using polular Ethereum tools with Tokn.
+          .features__item__text__p Follow guides to using polular Ethereum tools with BlockX.
     .sections__wrapper
-      .h2 Explore Tokn
-      .p__alt Get familiar with Tokn and explore its main concepts.
+      .h2 Explore BlockX
+      .p__alt Get familiar with BlockX and explore its main concepts.
       .sections
         router-link.sections__item(tag="a" :to="section.url" v-for="section in $frontmatter.sections")
           component(:is="`tm-icon-${section.icon}`").sections__item__icon
@@ -35,7 +35,7 @@
             .sections__item__title {{section.title}}
             .sections__item__desc {{section.desc}}
     .h2 Explore the stack
-    .p__alt Check out the docs for the various parts of the Tokn stack.
+    .p__alt Check out the docs for the various parts of the BlockX stack.
     .stack
       a.stack__item(:href="item.url" v-for="item in $frontmatter.stack" :style="{'--accent': item.color, '--opacity': '5%'}")
         .stack__item__wrapper

@@ -31,7 +31,7 @@ type AccountTestSuite struct {
 func (suite *AccountTestSuite) SetupTest() {
 	pubkey := secp256k1.GenPrivKey().PubKey()
 	addr := sdk.AccAddress(pubkey.Address())
-	balance := sdk.NewCoins(types.NewToknCoin(sdk.OneInt()))
+	balance := sdk.NewCoins(types.NewBlockXCoin(sdk.OneInt()))
 	baseAcc := auth.NewBaseAccount(addr, balance, pubkey, 10, 50)
 	suite.account = &types.EthAccount{
 		BaseAccount: baseAcc,
@@ -51,10 +51,10 @@ func (suite *AccountTestSuite) TestEthAccount_Balance() {
 		initialCoins sdk.Coins
 		amount       sdk.Int
 	}{
-		{"positive diff", types.AttoTokn, sdk.Coins{}, sdk.OneInt()},
-		{"zero diff, same coin", types.AttoTokn, sdk.NewCoins(types.NewToknCoin(sdk.ZeroInt())), sdk.ZeroInt()},
-		{"zero diff, other coin", sdk.DefaultBondDenom, sdk.NewCoins(types.NewToknCoin(sdk.ZeroInt())), sdk.ZeroInt()},
-		{"negative diff", types.AttoTokn, sdk.NewCoins(types.NewToknCoin(sdk.NewInt(10))), sdk.NewInt(1)},
+		{"positive diff", types.AttoBlockX, sdk.Coins{}, sdk.OneInt()},
+		{"zero diff, same coin", types.AttoBlockX, sdk.NewCoins(types.NewBlockXCoin(sdk.ZeroInt())), sdk.ZeroInt()},
+		{"zero diff, other coin", sdk.DefaultBondDenom, sdk.NewCoins(types.NewBlockXCoin(sdk.ZeroInt())), sdk.ZeroInt()},
+		{"negative diff", types.AttoBlockX, sdk.NewCoins(types.NewBlockXCoin(sdk.NewInt(10))), sdk.NewInt(1)},
 	}
 
 	for _, tc := range testCases {
@@ -69,7 +69,7 @@ func (suite *AccountTestSuite) TestEthAccount_Balance() {
 
 }
 
-func (suite *AccountTestSuite) TestToknAccountJSON() {
+func (suite *AccountTestSuite) TestBlockXAccountJSON() {
 	bz, err := json.Marshal(suite.account)
 	suite.Require().NoError(err)
 
@@ -83,7 +83,7 @@ func (suite *AccountTestSuite) TestToknAccountJSON() {
 	suite.Require().Equal(suite.account.PubKey, a.PubKey)
 }
 
-func (suite *AccountTestSuite) TestToknPubKeyJSON() {
+func (suite *AccountTestSuite) TestBlockXPubKeyJSON() {
 	privkey, err := ethsecp256k1.GenerateKey()
 	suite.Require().NoError(err)
 	bz := privkey.PubKey().Bytes()
@@ -102,7 +102,7 @@ func (suite *AccountTestSuite) TestSecpPubKeyJSON() {
 	suite.Require().Equal(pubk, pubkey)
 }
 
-func (suite *AccountTestSuite) TestToknAccount_String() {
+func (suite *AccountTestSuite) TestBlockXAccount_String() {
 	config := sdk.GetConfig()
 	types.SetBech32Prefixes(config)
 
@@ -113,7 +113,7 @@ func (suite *AccountTestSuite) TestToknAccount_String() {
   address: %s
   eth_address: %s
   coins:
-  - denom: atokn
+  - denom: abcx
     amount: "1"
   public_key: %s
   account_number: 10
@@ -133,7 +133,7 @@ func (suite *AccountTestSuite) TestToknAccount_String() {
 	suite.Require().Contains(accountStr, bech32pubkey)
 }
 
-func (suite *AccountTestSuite) TestToknAccount_MarshalJSON() {
+func (suite *AccountTestSuite) TestBlockXAccount_MarshalJSON() {
 	bz, err := suite.account.MarshalJSON()
 	suite.Require().NoError(err)
 	suite.Require().Contains(string(bz), suite.account.EthAddress().String())
@@ -148,7 +148,7 @@ func (suite *AccountTestSuite) TestToknAccount_MarshalJSON() {
 
 	// test that the sdk.AccAddress is populated from the hex address
 	jsonAcc := fmt.Sprintf(
-		`{"address":"","eth_address":"%s","coins":[{"denom":"atokn","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
+		`{"address":"","eth_address":"%s","coins":[{"denom":"abcx","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
 		suite.account.EthAddress().String(), bech32pubkey,
 	)
 
@@ -158,7 +158,7 @@ func (suite *AccountTestSuite) TestToknAccount_MarshalJSON() {
 	suite.Require().Equal(suite.account.Address.String(), res.Address.String())
 
 	jsonAcc = fmt.Sprintf(
-		`{"address":"","eth_address":"","coins":[{"denom":"atokn","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
+		`{"address":"","eth_address":"","coins":[{"denom":"abcx","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
 		bech32pubkey,
 	)
 
@@ -168,7 +168,7 @@ func (suite *AccountTestSuite) TestToknAccount_MarshalJSON() {
 
 	// test that the sdk.AccAddress is populated from the hex address
 	jsonAcc = fmt.Sprintf(
-		`{"address": "%s","eth_address":"0x0000000000000000000000000000000000000000","coins":[{"denom":"atokn","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
+		`{"address": "%s","eth_address":"0x0000000000000000000000000000000000000000","coins":[{"denom":"abcx","amount":"1"}],"public_key":"%s","account_number":10,"sequence":50,"code_hash":"0102"}`,
 		suite.account.Address.String(), bech32pubkey,
 	)
 

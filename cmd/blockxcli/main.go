@@ -50,8 +50,8 @@ func main() {
 	config.Seal()
 
 	rootCmd := &cobra.Command{
-		Use:   "tokncli",
-		Short: "Command line interface for interacting with toknd",
+		Use:   "blockxcli",
+		Short: "Command line interface for interacting with blockxd",
 	}
 
 	// Add --chain-id to persistent flags and mark it required

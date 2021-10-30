@@ -44,14 +44,14 @@ func init() {
 	ethermint.SetBip44CoinType(config)
 }
 
-const appName = "Tokn"
+const appName = "BlockX"
 
 var (
 	// DefaultCLIHome sets the default home directories for the application CLI
-	DefaultCLIHome = os.ExpandEnv("$HOME/.tokncli")
+	DefaultCLIHome = os.ExpandEnv("$HOME/.blockxcli")
 
 	// DefaultNodeHome sets the folder where the applcation data and configuration will be stored
-	DefaultNodeHome = os.ExpandEnv("$HOME/.toknd")
+	DefaultNodeHome = os.ExpandEnv("$HOME/.blockxd")
 
 	// ModuleBasics defines the module BasicManager is in charge of setting up basic,
 	// non-dependant module elements, such as codec registration
@@ -91,12 +91,12 @@ var (
 	}
 )
 
-var _ simapp.App = (*ToknApp)(nil)
+var _ simapp.App = (*BlockXApp)(nil)
 
-// ToknApp implements an extended ABCI application. It is an application
+// BlockXApp implements an extended ABCI application. It is an application
 // that may process transactions through Ethereum's EVM running atop of
 // Tendermint consensus.
-type ToknApp struct {
+type BlockXApp struct {
 	*bam.BaseApp
 	cdc *codec.Codec
 
@@ -131,8 +131,8 @@ type ToknApp struct {
 	sm *module.SimulationManager
 }
 
-// NewToknApp returns a reference to a new initialized Tokn application.
-func NewToknApp(
+// NewBlockXApp returns a reference to a new initialized BlockX application.
+func NewBlockXApp(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,
@@ -140,11 +140,11 @@ func NewToknApp(
 	skipUpgradeHeights map[int64]bool,
 	invCheckPeriod uint,
 	baseAppOptions ...func(*bam.BaseApp),
-) *ToknApp {
+) *BlockXApp {
 
 	cdc := ethermintcodec.MakeCodec(ModuleBasics)
 
-	// NOTE we use custom Tokn transaction decoder that supports the sdk.Tx interface instead of sdk.StdTx
+	// NOTE we use custom BlockX transaction decoder that supports the sdk.Tx interface instead of sdk.StdTx
 	bApp := bam.NewBaseApp(appName, logger, db, evm.TxDecoder(cdc), baseAppOptions...)
 	bApp.SetCommitMultiStoreTracer(traceStore)
 	bApp.SetAppVersion(version.Version)
@@ -158,7 +158,7 @@ func NewToknApp(
 
 	tkeys := sdk.NewTransientStoreKeys(params.TStoreKey)
 
-	app := &ToknApp{
+	app := &BlockXApp{
 		BaseApp:        bApp,
 		cdc:            cdc,
 		invCheckPeriod: invCheckPeriod,
@@ -180,7 +180,7 @@ func NewToknApp(
 	app.subspaces[evidence.ModuleName] = app.ParamsKeeper.Subspace(evidence.DefaultParamspace)
 	app.subspaces[evm.ModuleName] = app.ParamsKeeper.Subspace(evm.DefaultParamspace)
 
-	// use custom Tokn account for contracts
+	// use custom BlockX account for contracts
 	app.AccountKeeper = auth.NewAccountKeeper(
 		cdc, keys[auth.StoreKey], app.subspaces[auth.ModuleName], ethermint.ProtoAccount,
 	)
@@ -317,32 +317,32 @@ func NewToknApp(
 }
 
 // Name returns the name of the App
-func (app *ToknApp) Name() string { return app.BaseApp.Name() }
+func (app *BlockXApp) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker updates every begin block
-func (app *ToknApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
+func (app *BlockXApp) BeginBlocker(ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker updates every end block
-func (app *ToknApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
+func (app *BlockXApp) EndBlocker(ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
 // InitChainer updates at chain initialization
-func (app *ToknApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *BlockXApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState simapp.GenesisState
 	app.cdc.MustUnmarshalJSON(req.AppStateBytes, &genesisState)
 	return app.mm.InitGenesis(ctx, genesisState)
 }
 
 // LoadHeight loads state at a particular height
-func (app *ToknApp) LoadHeight(height int64) error {
+func (app *BlockXApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height, app.keys[bam.MainStoreKey])
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *ToknApp) ModuleAccountAddrs() map[string]bool {
+func (app *BlockXApp) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		modAccAddrs[supply.NewModuleAddress(acc).String()] = true
@@ -352,7 +352,7 @@ func (app *ToknApp) ModuleAccountAddrs() map[string]bool {
 }
 
 // BlacklistedAccAddrs returns all the app's module account addresses black listed for receiving tokens.
-func (app *ToknApp) BlacklistedAccAddrs() map[string]bool {
+func (app *BlockXApp) BlacklistedAccAddrs() map[string]bool {
 	blacklistedAddrs := make(map[string]bool)
 	for acc := range maccPerms {
 		blacklistedAddrs[supply.NewModuleAddress(acc).String()] = !allowedReceivingModAcc[acc]
@@ -362,22 +362,22 @@ func (app *ToknApp) BlacklistedAccAddrs() map[string]bool {
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *ToknApp) SimulationManager() *module.SimulationManager {
+func (app *BlockXApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *ToknApp) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *BlockXApp) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.keys[storeKey]
 }
 
-// Codec returns Tokn's codec.
+// Codec returns BlockX's codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *ToknApp) Codec() *codec.Codec {
+func (app *BlockXApp) Codec() *codec.Codec {
 	return app.cdc
 }
 

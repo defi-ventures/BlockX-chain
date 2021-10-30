@@ -455,7 +455,7 @@ func (csdb *CommitStateDB) HasSuicided(addr ethcmn.Address) bool {
 	return false
 }
 
-// StorageTrie returns nil as the state in Tokn does not use a direct
+// StorageTrie returns nil as the state in BlockX does not use a direct
 // storage trie.
 func (csdb *CommitStateDB) StorageTrie(addr ethcmn.Address) ethstate.Trie {
 	return nil
@@ -636,7 +636,7 @@ func (csdb *CommitStateDB) RevertToSnapshot(revID int) {
 // ----------------------------------------------------------------------------
 
 // Database retrieves the low level database supporting the lower level trie
-// ops. It is not used in Tokn, so it returns nil.
+// ops. It is not used in BlockX, so it returns nil.
 func (csdb *CommitStateDB) Database() ethstate.Database {
 	return nil
 }

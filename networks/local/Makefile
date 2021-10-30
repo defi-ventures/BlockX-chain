@@ -1,4 +1,4 @@
 all:
-	docker build --tag toknd/node ethermintnode
+	docker build --tag blockxd/node ethermintnode
 
 .PHONY: all

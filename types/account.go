@@ -25,7 +25,7 @@ func init() {
 }
 
 // ----------------------------------------------------------------------------
-// Main Tokn account
+// Main BlockX account
 // ----------------------------------------------------------------------------
 
 // EthAccount implements the auth.Account interface and embeds an
