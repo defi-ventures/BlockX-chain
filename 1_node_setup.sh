@@ -2,9 +2,9 @@
 
 KEY="blockxtestkey-1"
 CHAINID="blockx-11"
-MONIKER="localtestnet-1"
+MONIKER="validator-1"
 MNEMONIC=""
-GENESIS_ACCOUNT_AMOUNT=1000000000000000000000000000abcx
+GENESIS_ACCOUNT_AMOUNT=100000000000000000000000000abcx
 STAKE_AMOUNT=10000000000000000000000abcx
 
 # remove existing daemon and client
@@ -31,9 +31,6 @@ cat $HOME/.blockxd/config/genesis.json | jq '.app_state["staking"]["params"]["bo
 cat $HOME/.blockxd/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="abcx"' > $HOME/.blockxd/config/tmp_genesis.json && mv $HOME/.blockxd/config/tmp_genesis.json $HOME/.blockxd/config/genesis.json
 cat $HOME/.blockxd/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="abcx"' > $HOME/.blockxd/config/tmp_genesis.json && mv $HOME/.blockxd/config/tmp_genesis.json $HOME/.blockxd/config/genesis.json
 cat $HOME/.blockxd/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="abcx"' > $HOME/.blockxd/config/tmp_genesis.json && mv $HOME/.blockxd/config/tmp_genesis.json $HOME/.blockxd/config/genesis.json
-
-# increase block time (?)
-cat $HOME/.blockxd/config/genesis.json | jq '.consensus_params["block"]["time_iota_ms"]="30000"' > $HOME/.blockxd/config/tmp_genesis.json && mv $HOME/.blockxd/config/tmp_genesis.json $HOME/.blockxd/config/genesis.json
 
 if [[ $1 == "pending" ]]; then
     echo "pending mode on; block times will be set to 30s."
