@@ -45,7 +45,7 @@ cd ~/BlockX-chain
 4. Replace the genesis file in ~/.blockxd/config/
 ```
 {
-   "genesis_time":"2021-12-07T07:40:37.549821343Z",
+   "genesis_time":"2021-12-21T07:20:53.653111104Z",
    "chain_id":"blockx-11",
    "consensus_params":{
       "block":{
@@ -65,30 +65,6 @@ cd ~/BlockX-chain
    },
    "app_hash":"",
    "app_state":{
-      "gov":{
-         "starting_proposal_id":"1",
-         "deposits":null,
-         "votes":null,
-         "proposals":null,
-         "deposit_params":{
-            "min_deposit":[
-               {
-                  "denom":"abcx",
-                  "amount":"10000000"
-               }
-            ],
-            "max_deposit_period":"172800000000000"
-         },
-         "voting_params":{
-            "voting_period":"172800000000000"
-         },
-         "tally_params":{
-            "quorum":"0.334000000000000000",
-            "threshold":"0.500000000000000000",
-            "veto":"0.334000000000000000"
-         }
-      },
-      "params":null,
       "genutil":{
          "gentxs":[
             {
@@ -113,10 +89,10 @@ cd ~/BlockX-chain
                            "min_self_delegation":"1",
                            "delegator_address":"eth12fkhumzzmdjlph5dcj5hemzqlc663pf5k8md7y",
                            "validator_address":"ethvaloper12fkhumzzmdjlph5dcj5hemzqlc663pf5g49es6",
-                           "pubkey":"ethvalconspub1zcjduepq06ufad8artv6k3qchzmf7arrcndlkl9ne5af7y230vv0vqppafsq79ure9",
+                           "pubkey":"ethvalconspub1zcjduepqxukyn24h2ll0l768s28wtllqkktejhm8d0klzu9y382e36sm0k8sgnfkjz",
                            "value":{
                               "denom":"abcx",
-                              "amount":"10000000000000000000000"
+                              "amount":"100000000000000000000000"
                            }
                         }
                      }
@@ -133,42 +109,38 @@ cd ~/BlockX-chain
                            "type":"ethermint/PubKeyEthSecp256k1",
                            "value":"A5ZbQPTCM4L6oSiHsIbUQf0dUguqR4r07DOtXxbtTvUn"
                         },
-                        "signature":"5XzdQoZ6JQX2gCm47CNtZ754m6wHXM2OCuJPt17GktNujjoegrxKSBSQ9x2jGCgtMsI7K47UnSCwylzdho0hWgA="
+                        "signature":"m7apNOzGpewz9Dt2x/Ipf1ZWcQGVgT1MEGXuqFHdlkgARNSEqBVUH8r12JZpATfZYiyXdVD0/0KYzpMQd/mHDgE="
                      }
                   ],
-                  "memo":"34f41fe5967e3dfcbbbece1af3d2254f35648d2c@10.12.20.61:26656"
+                  "memo":"784d61aa794ac513cc64b4d98684264975b6a62e@10.12.20.61:26656"
                }
             }
          ]
       },
-      "evm":{
-         "accounts":[
-            
-         ],
-         "txs_logs":[
-            
-         ],
-         "chain_config":{
-            "homestead_block":"0",
-            "dao_fork_block":"0",
-            "dao_fork_support":true,
-            "eip150_block":"0",
-            "eip150_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-            "eip155_block":"0",
-            "eip158_block":"0",
-            "byzantium_block":"0",
-            "constantinople_block":"0",
-            "petersburg_block":"0",
-            "istanbul_block":"0",
-            "muir_glacier_block":"0",
-            "yoloV2_block":"-1",
-            "ewasm_block":"-1"
+      "bank":{
+         "send_enabled":true
+      },
+      "gov":{
+         "starting_proposal_id":"1",
+         "deposits":null,
+         "votes":null,
+         "proposals":null,
+         "deposit_params":{
+            "min_deposit":[
+               {
+                  "denom":"abcx",
+                  "amount":"10000000"
+               }
+            ],
+            "max_deposit_period":"172800000000000"
          },
-         "params":{
-            "evm_denom":"abcx",
-            "enable_create":true,
-            "enable_call":true,
-            "extra_eips":null
+         "voting_params":{
+            "voting_period":"172800000000000"
+         },
+         "tally_params":{
+            "quorum":"0.334000000000000000",
+            "threshold":"0.500000000000000000",
+            "veto":"0.334000000000000000"
          }
       },
       "staking":{
@@ -187,11 +159,13 @@ cd ~/BlockX-chain
          "redelegations":null,
          "exported":false
       },
-      "crisis":{
-         "constant_fee":{
-            "denom":"abcx",
-            "amount":"1000"
-         }
+      "evidence":{
+         "params":{
+            "max_evidence_age":"120000000000"
+         },
+         "evidence":[
+            
+         ]
       },
       "slashing":{
          "params":{
@@ -208,66 +182,8 @@ cd ~/BlockX-chain
             
          }
       },
-      "bank":{
-         "send_enabled":true
-      },
-      "supply":{
-         "supply":[
-            
-         ]
-      },
       "upgrade":{
          
-      },
-      "evidence":{
-         "params":{
-            "max_evidence_age":"120000000000"
-         },
-         "evidence":[
-            
-         ]
-      },
-      "mint":{
-         "minter":{
-            "inflation":"0.130000000000000000",
-            "annual_provisions":"0.000000000000000000"
-         },
-         "params":{
-            "mint_denom":"abcx",
-            "inflation_rate_change":"0.130000000000000000",
-            "inflation_max":"0.200000000000000000",
-            "inflation_min":"0.070000000000000000",
-            "goal_bonded":"0.670000000000000000",
-            "blocks_per_year":"6311520"
-         }
-      },
-      "auth":{
-         "params":{
-            "max_memo_characters":"256",
-            "tx_sig_limit":"7",
-            "tx_size_cost_per_byte":"10",
-            "sig_verify_cost_ed25519":"590",
-            "sig_verify_cost_secp256k1":"1000"
-         },
-         "accounts":[
-            {
-               "type":"ethermint/EthAccount",
-               "value":{
-                  "address":"eth12fkhumzzmdjlph5dcj5hemzqlc663pf5k8md7y",
-                  "eth_address":"0x526d7e6c42DB65F0DE8dC4A97cEc40FE35A88534",
-                  "coins":[
-                     {
-                        "denom":"abcx",
-                        "amount":"100000000000000000000000000"
-                     }
-                  ],
-                  "public_key":"",
-                  "account_number":0,
-                  "sequence":0,
-                  "code_hash":"c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
-               }
-            }
-         ]
       },
       "distribution":{
          "params":{
@@ -303,6 +219,90 @@ cd ~/BlockX-chain
          "validator_slash_events":[
             
          ]
+      },
+      "params":null,
+      "crisis":{
+         "constant_fee":{
+            "denom":"abcx",
+            "amount":"1000"
+         }
+      },
+      "evm":{
+         "accounts":[
+            
+         ],
+         "txs_logs":[
+            
+         ],
+         "chain_config":{
+            "homestead_block":"0",
+            "dao_fork_block":"0",
+            "dao_fork_support":true,
+            "eip150_block":"0",
+            "eip150_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
+            "eip155_block":"0",
+            "eip158_block":"0",
+            "byzantium_block":"0",
+            "constantinople_block":"0",
+            "petersburg_block":"0",
+            "istanbul_block":"0",
+            "muir_glacier_block":"0",
+            "yoloV2_block":"-1",
+            "ewasm_block":"-1"
+         },
+         "params":{
+            "evm_denom":"abcx",
+            "enable_create":true,
+            "enable_call":true,
+            "extra_eips":null
+         }
+      },
+      "supply":{
+         "supply":[
+            
+         ]
+      },
+      "auth":{
+         "params":{
+            "max_memo_characters":"256",
+            "tx_sig_limit":"7",
+            "tx_size_cost_per_byte":"10",
+            "sig_verify_cost_ed25519":"590",
+            "sig_verify_cost_secp256k1":"1000"
+         },
+         "accounts":[
+            {
+               "type":"ethermint/EthAccount",
+               "value":{
+                  "address":"eth12fkhumzzmdjlph5dcj5hemzqlc663pf5k8md7y",
+                  "eth_address":"0x526d7e6c42DB65F0DE8dC4A97cEc40FE35A88534",
+                  "coins":[
+                     {
+                        "denom":"abcx",
+                        "amount":"1000000000000000000000000000"
+                     }
+                  ],
+                  "public_key":"",
+                  "account_number":0,
+                  "sequence":0,
+                  "code_hash":"c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+               }
+            }
+         ]
+      },
+      "mint":{
+         "minter":{
+            "inflation":"0.130000000000000000",
+            "annual_provisions":"0.000000000000000000"
+         },
+         "params":{
+            "mint_denom":"abcx",
+            "inflation_rate_change":"0.130000000000000000",
+            "inflation_max":"0.200000000000000000",
+            "inflation_min":"0.070000000000000000",
+            "goal_bonded":"0.670000000000000000",
+            "blocks_per_year":"6311520"
+         }
       }
    }
 }
@@ -310,7 +310,7 @@ cd ~/BlockX-chain
 
 5. Add the following in seeds, persistent_peers in ~/.blockxd/config/config.toml
 ```
-34f41fe5967e3dfcbbbece1af3d2254f35648d2c@52.71.20.235:26656,a94ec9354d7fbe3748e87fcb3c98915f695ce3e3@54.166.134.59:26656
+784d61aa794ac513cc64b4d98684264975b6a62e@52.71.20.235:26656,a94ec9354d7fbe3748e87fcb3c98915f695ce3e3@54.166.134.59:26656
 ```
 
 6. Reset the local chain config
